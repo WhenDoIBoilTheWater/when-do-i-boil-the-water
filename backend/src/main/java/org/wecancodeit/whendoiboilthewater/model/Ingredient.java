@@ -8,20 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Ingredient {
 	@GeneratedValue @Id private Long id;
 	private String name;
 	
-	@ManyToMany
+	@JsonIgnore @ManyToMany
 	private Collection<Recipe> recipes = new HashSet<Recipe>();
 	
 	public Ingredient() {}
 
-	public Ingredient(String name, Collection<Recipe> recipes) {
-		super();
+	public Ingredient(String name) {
 		this.name = name;
-		this.recipes = recipes;
 	}
 
 	public Long getId() {

@@ -5,13 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Step {
 	@Id @GeneratedValue private Long id;
 	private int length;
 	private String description;
 	private boolean bypassNotification;
-	@ManyToOne private Recipe recipe;
+	@JsonIgnore @ManyToOne private Recipe recipe;
 
 
 	public Step() {}

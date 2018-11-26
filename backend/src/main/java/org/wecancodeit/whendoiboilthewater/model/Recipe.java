@@ -11,14 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Recipe {
 	@GeneratedValue @Id private Long id;
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany
 	private List<Step> steps = new ArrayList<Step>();
 	@ManyToMany
 	private Collection<Ingredient> ingredients = new HashSet<Ingredient>();
-	private int Length;
+	@JsonIgnore @ManyToMany
+	private Collection<Meal> meals = new HashSet<Meal>();
+	private String description;
+	private int length;
 	private String name;	
 	private int servingSize;
 	
@@ -26,12 +31,13 @@ public class Recipe {
 	
 
 	
-	public Recipe(List<Step> steps, Collection<Ingredient> ingredients, int length, String name, int servingSize) {
+	public Recipe( String name, int servingSize, String description, List<Step> steps, Collection<Ingredient> ingredients) {
 		this.steps = steps;
 		this.ingredients = ingredients;
-		Length = length;
+		this.length = calculateLength();
 		this.name = name;
 		this.servingSize = servingSize;
+		this.description = description;
 	}
 
 
@@ -55,7 +61,7 @@ public class Recipe {
 
 
 	public int getLength() {
-		return Length;
+		return length;
 	}
 
 
@@ -68,6 +74,18 @@ public class Recipe {
 
 	public int getServingSize() {
 		return servingSize;
+	}
+
+
+
+	public Collection<Meal> getMeals() {
+		return meals;
+	}
+
+
+
+	public String getDescription() {
+		return description;
 	}
 
 
