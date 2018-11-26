@@ -13,7 +13,7 @@ public class Meal {
 
 	@GeneratedValue @Id private Long id;
 	@ManyToMany private Collection<Recipe> recipes = new HashSet<Recipe>();
-	private int length;
+	private Long length;
 
 	public Meal() {}
 
@@ -32,12 +32,12 @@ public class Meal {
 		return recipes;
 	}
 
-	public int getLength() {
+	public Long getLength() {
 		return length;
 	}
 
-	public int calculateLength() {
-		int totalLength = 0;
+	public Long calculateLength() {
+		Long totalLength = 0L;
 		for (Recipe recipe : recipes) {
 			if (recipe.getLength() > totalLength) {
 				totalLength = recipe.getLength();

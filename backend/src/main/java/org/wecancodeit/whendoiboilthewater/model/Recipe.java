@@ -23,7 +23,7 @@ public class Recipe {
 	@JsonIgnore @ManyToMany
 	private Collection<Meal> meals = new HashSet<Meal>();
 	private String description;
-	private int length;
+	private Long length;
 	private String name;	
 	private int servingSize;
 	
@@ -31,67 +31,52 @@ public class Recipe {
 	
 
 	
-	public Recipe( String name, int servingSize, String description, List<Step> steps, Collection<Ingredient> ingredients) {
-		this.steps = steps;
-		this.ingredients = ingredients;
-		this.length = calculateLength();
+	public Recipe( String name, int servingSize, String description) {
 		this.name = name;
 		this.servingSize = servingSize;
 		this.description = description;
 	}
 
-
-
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public List<Step> getSteps() {
 		return steps;
 	}
 
-
-
 	public Collection<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-
-
-	public int getLength() {
+	public Long getLength() {
 		return length;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public int getServingSize() {
 		return servingSize;
 	}
-
-
 
 	public Collection<Meal> getMeals() {
 		return meals;
 	}
 
-
-
 	public String getDescription() {
 		return description;
 	}
 
-
-
-	public int calculateLength() {
-		int totalLength = 0;
+	
+	
+	public void addStep(String description, Long length) {
+		
+	}
+	
+	public Long calculateLength() {
+		Long totalLength = 0L;
 		for (Step step : steps) {
 			totalLength += step.getLength();
 		}
