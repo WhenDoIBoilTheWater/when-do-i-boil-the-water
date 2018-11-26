@@ -3,6 +3,7 @@ package org.wecancodeit.whendoiboilthewater.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Step {
@@ -10,6 +11,8 @@ public class Step {
 	private int time;
 	private String description;
 	private boolean bypassNotification;
+	@ManyToOne private Recipe recipe;
+
 
 	public Step() {}
 
@@ -33,6 +36,9 @@ public class Step {
 	public boolean isBypassNotification() {
 		return bypassNotification;
 	}
-	
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
 
 }
