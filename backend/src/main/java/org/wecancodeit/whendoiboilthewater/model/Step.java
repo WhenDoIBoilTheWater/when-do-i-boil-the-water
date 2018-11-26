@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Step {
 	@Id @GeneratedValue private Long id;
-	private int time;
+	private int length;
 	private String description;
 	private boolean bypassNotification;
 	@ManyToOne private Recipe recipe;
@@ -16,8 +16,8 @@ public class Step {
 
 	public Step() {}
 
-	public Step(int time, String description) {
-		this.time = time;
+	public Step(int length, String description) {
+		this.length = length;
 		this.description = description;
 	}
 
@@ -25,8 +25,8 @@ public class Step {
 		return id;
 	}
 
-	public int getTime() {
-		return time;
+	public int getLength() {
+		return length;
 	}
 
 	public String getDescription() {
