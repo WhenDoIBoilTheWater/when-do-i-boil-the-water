@@ -77,7 +77,7 @@ public class Populator implements CommandLineRunner {
 		
 		Recipe recipe2 = new Recipe("Single Fried Cheeto", 4, "A delicacy.");
 		recipeRepo.save(recipe2);
-		Step cheetoStep1 = new Step(1800L,"Fry Cheeto");
+		Step cheetoStep1 = new Step(608L,"Fry Cheeto");
 		stepRepo.save(cheetoStep1);
 		recipe2.addIngredient(cheeto);
 		cheeto.addRecipe(recipe2);
