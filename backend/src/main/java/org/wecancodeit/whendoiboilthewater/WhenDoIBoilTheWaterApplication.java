@@ -8,5 +8,6 @@ public class WhenDoIBoilTheWaterApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WhenDoIBoilTheWaterApplication.class, args);
+		System.out.println("Server is Running!");
 	}
 }
