@@ -1,7 +1,7 @@
 {
-  "name": "react-hello-world",
+  "name": "when-do-i-boil-the-water",
   "version": "1.0.0",
-  "description": "React Hello World",
+  "description": "When Do I Boil the Water?",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
