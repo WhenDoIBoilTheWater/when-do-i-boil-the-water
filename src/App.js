@@ -12,7 +12,7 @@ export class App extends React.Component {
   
   render() {
     return (
-      <Cooking />
+      <Cooking mealId={11}/>
     )
   }
 }
