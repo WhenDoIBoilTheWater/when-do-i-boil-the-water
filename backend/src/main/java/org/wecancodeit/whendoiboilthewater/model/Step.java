@@ -3,18 +3,23 @@ package org.wecancodeit.whendoiboilthewater.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Step {
 	@Id @GeneratedValue private Long id;
-	private int time;
+	private Long secBeforeEnd;
 	private String description;
 	private boolean bypassNotification;
+	@JsonIgnore @ManyToOne private Recipe recipe;
+
 
 	public Step() {}
 
-	public Step(int time, String description) {
-		this.time = time;
+	public Step(Long secBeforeEnd, String description) {
+		this.secBeforeEnd = secBeforeEnd;
 		this.description = description;
 	}
 
@@ -22,8 +27,8 @@ public class Step {
 		return id;
 	}
 
-	public int getTime() {
-		return time;
+	public Long getSecBeforeEnd() {
+		return secBeforeEnd;
 	}
 
 	public String getDescription() {
@@ -33,6 +38,13 @@ public class Step {
 	public boolean isBypassNotification() {
 		return bypassNotification;
 	}
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
 	
+	public void addRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
 
 }
