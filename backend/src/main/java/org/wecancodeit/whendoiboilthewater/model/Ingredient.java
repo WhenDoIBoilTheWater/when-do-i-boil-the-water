@@ -15,7 +15,7 @@ public class Ingredient {
 	@GeneratedValue @Id private Long id;
 	private String name;
 	
-	@JsonIgnore @ManyToMany
+	@ManyToMany
 	private Collection<Recipe> recipes = new HashSet<Recipe>();
 	
 	public Ingredient() {}
@@ -34,6 +34,10 @@ public class Ingredient {
 
 	public Collection<Recipe> getRecipes() {
 		return recipes;
+	}
+	
+	public void addRecipe(Recipe recipe) {
+		recipes.add(recipe);
 	}
 	
 	
