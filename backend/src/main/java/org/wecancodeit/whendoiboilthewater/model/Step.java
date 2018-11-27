@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Step {
 	@Id @GeneratedValue private Long id;
-	private Long length;
+	private Long secBeforeEnd;
 	private String description;
 	private boolean bypassNotification;
 	@JsonIgnore @ManyToOne private Recipe recipe;
@@ -18,8 +18,8 @@ public class Step {
 
 	public Step() {}
 
-	public Step(Long length, String description) {
-		this.length = length;
+	public Step(Long secBeforeEnd, String description) {
+		this.secBeforeEnd = secBeforeEnd;
 		this.description = description;
 	}
 
@@ -27,8 +27,8 @@ public class Step {
 		return id;
 	}
 
-	public Long getLength() {
-		return length;
+	public Long getSecBeforeEnd() {
+		return secBeforeEnd;
 	}
 
 	public String getDescription() {
@@ -41,6 +41,10 @@ public class Step {
 
 	public Recipe getRecipe() {
 		return recipe;
+	}
+	
+	public void addRecipe(Recipe recipe) {
+		this.recipe = recipe;
 	}
 
 }

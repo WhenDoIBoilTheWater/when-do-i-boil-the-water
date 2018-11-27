@@ -35,6 +35,7 @@ public class Recipe {
 		this.name = name;
 		this.servingSize = servingSize;
 		this.description = description;
+		this.length = calculateLength();
 	}
 
 	public Long getId() {
@@ -70,16 +71,29 @@ public class Recipe {
 	}
 
 	
+	//will we ever use this?
+	public void addStep(String description, Long secBeforeEnd) {
+		steps.add(new Step(secBeforeEnd, description));
+		length = calculateLength();
+	}
 	
-	public void addStep(String description, Long length) {
-		
+	public void addStep(Step step) {
+		steps.add(step);
+		length = calculateLength();
+	}
+	
+	public void addIngredient(Ingredient ingredient) {
+		ingredients.add(ingredient);
 	}
 	
 	public Long calculateLength() {
-		Long totalLength = 0L;
+		Long longestStepTime = 0L;
 		for (Step step : steps) {
-			totalLength += step.getLength();
+			if (step.getSecBeforeEnd() > longestStepTime) {
+				longestStepTime = step.getSecBeforeEnd();
+			}
 		}
-		return totalLength;
+		return longestStepTime;
 	}
+
 }
