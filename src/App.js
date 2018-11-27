@@ -13,16 +13,11 @@ export class App extends React.Component {
       value: "0",
       isClicked: false,
       isPaused: false,
-      default: [{
+      currentStep: {
           id : '1',
           secBeforeEnd : '10',
           description : 'boil'
-        },
-        {
-          id : '2',
-          secBeforeEnd : '10',
-          description : 'stir'
-        }]
+        }
     };
     this.secondsRemaining;
     this.intervalHandle;
@@ -64,9 +59,9 @@ export class App extends React.Component {
     }
     this.secondsRemaining--;
   }
-  startCountDown(seconds) {
+  startCountDown() {
     this.intervalHandle = setInterval(this.tick, 1000);
-    this.secondsRemaining = this.state.default[this.state.step].secBeforeEnd;
+    this.secondsRemaining = this.state.currentStep.secBeforeEnd;
     this.setState({
       isClicked: true
     });
@@ -90,15 +85,16 @@ export class App extends React.Component {
   render() {
     const clicked = this.state.isClicked;
     if (clicked) {
-      return (<div>
-            <Timer value={this.state.value} seconds={this.state.seconds} description={this.state.default[this.state.step].description} />
-            <StopButton stopCountDown={this.stopCountDown}/>
-          </div>);
+      return (
+        <div>
+          <Timer value={this.state.value} seconds={this.state.seconds} description={this.state.currentStep.description} />
+          <StopButton stopCountDown={this.stopCountDown}/>
+        </div>);
     }
     else {
       return (
           <div>
-            <Timer value={this.state.value} seconds={this.state.default[this.state.step].secBeforeEnd} description={this.state.default[this.state.step].description} />
+            <Timer value={this.state.value} seconds={this.state.currentStep.secBeforeEnd} description={this.state.currentStep.description} />
             <StartButton startCountDown={this.startCountDown} seconds={this.state.seconds} />
           </div>
           );
