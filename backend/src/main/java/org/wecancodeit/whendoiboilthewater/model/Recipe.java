@@ -16,16 +16,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Recipe {
 	@GeneratedValue @Id private Long id;
+	private String name;	
+	private int servingSize;
+	private String description;
+	private Long length;
 	@OneToMany(mappedBy = "recipe")
 	private List<Step> steps = new ArrayList<Step>();
-	@ManyToMany
+	@JsonIgnore @ManyToMany
 	private Collection<Ingredient> ingredients = new HashSet<Ingredient>();
 	@JsonIgnore @ManyToMany
 	private Collection<Meal> meals = new HashSet<Meal>();
-	private String description;
-	private Long length;
-	private String name;	
-	private int servingSize;
 	
 	public Recipe() {}
 	

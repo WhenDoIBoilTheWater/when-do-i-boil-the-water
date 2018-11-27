@@ -58,8 +58,11 @@ public class Populator implements CommandLineRunner {
 		recipe1.addStep(step3);
 		step3.addRecipe(recipe1);
 		recipe1.addIngredient(farfalle);
+		farfalle.addRecipe(recipe1);
 		recipe1.addIngredient(popRocks);
+		popRocks.addRecipe(recipe1);
 		recipe1.addIngredient(hotDog);
+		hotDog.addRecipe(recipe1);
 		
 		recipe1 = recipeRepo.save(recipe1);
 		farfalle = ingredientRepo.save(farfalle);
@@ -76,12 +79,15 @@ public class Populator implements CommandLineRunner {
 		recipeRepo.save(recipe2);
 		Step cheetoStep1 = new Step(1800L,"Fry Cheeto");
 		stepRepo.save(cheetoStep1);
+		recipe2.addIngredient(cheeto);
+		cheeto.addRecipe(recipe2);
 		
 		recipe2.addStep(cheetoStep1);
 		cheetoStep1.addRecipe(recipe2);
 		
 		recipeRepo.save(recipe2);
 		stepRepo.save(cheetoStep1);
+		ingredientRepo.save(cheeto);
 		
 		Meal meal1 = new Meal();
 		meal1.addRecipe(recipe1);
