@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.whendoiboilthewater.model.Ingredient;
+import org.wecancodeit.whendoiboilthewater.model.Meal;
 import org.wecancodeit.whendoiboilthewater.model.Recipe;
 import org.wecancodeit.whendoiboilthewater.model.Step;
 import org.wecancodeit.whendoiboilthewater.repository.IngredientRepository;
@@ -56,12 +57,38 @@ public class Populator implements CommandLineRunner {
 		step2.addRecipe(recipe1);
 		recipe1.addStep(step3);
 		step3.addRecipe(recipe1);
+		recipe1.addIngredient(farfalle);
+		recipe1.addIngredient(popRocks);
+		recipe1.addIngredient(hotDog);
 		
 		recipe1 = recipeRepo.save(recipe1);
+		farfalle = ingredientRepo.save(farfalle);
+		popRocks = ingredientRepo.save(popRocks);
+		hotDog = ingredientRepo.save(hotDog);		
+		stepRepo.save(step1);
+		stepRepo.save(step2);
+		stepRepo.save(step3);
 		
-		for(Step step : recipe1.getSteps()) {
-			System.out.println(step.getDescription());
-		}
+		Ingredient cheeto = new Ingredient("cheeto");
+		ingredientRepo.save(cheeto);
+		
+		Recipe recipe2 = new Recipe("Single Fried Cheeto", 4, "A delicacy.");
+		recipeRepo.save(recipe2);
+		Step cheetoStep1 = new Step(1800L,"Fry Cheeto");
+		stepRepo.save(cheetoStep1);
+		
+		recipe2.addStep(cheetoStep1);
+		cheetoStep1.addRecipe(recipe2);
+		
+		recipeRepo.save(recipe2);
+		stepRepo.save(cheetoStep1);
+		
+		Meal meal1 = new Meal();
+		meal1.addRecipe(recipe1);
+		meal1.addRecipe(recipe2);
+		
+		mealRepo.save(meal1);
+		
 	}
 	
 }

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Recipe {
 	@GeneratedValue @Id private Long id;
-	@OneToMany
+	@OneToMany(mappedBy = "recipe")
 	private List<Step> steps = new ArrayList<Step>();
 	@ManyToMany
 	private Collection<Ingredient> ingredients = new HashSet<Ingredient>();

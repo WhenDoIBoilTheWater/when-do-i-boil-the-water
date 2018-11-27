@@ -16,13 +16,7 @@ public class Meal {
 	private Long length;
 
 	public Meal() {}
-
-	public Meal(Collection<Recipe> recipes) {
-		this.recipes = recipes;
-		this.length = calculateLength();
-	}
-
-
+	
 
 	public Long getId() {
 		return id;
@@ -44,6 +38,11 @@ public class Meal {
 			}
 		}
 		return totalLength;
+	}
+	
+	public void addRecipe(Recipe recipe) {
+		this.recipes.add(recipe);
+		this.length = calculateLength();
 	}
 	
 }
