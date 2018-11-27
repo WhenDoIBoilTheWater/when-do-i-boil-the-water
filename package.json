@@ -1,7 +1,7 @@
 {
-  "name": "react-hello-world",
+  "name": "when-do-i-boil-the-water",
   "version": "1.0.0",
-  "description": "React Hello World",
+  "description": "When Do I Boil the Water?",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -12,6 +12,7 @@
   "author": "CodeMix",
   "license": "ISC",
   "dependencies": {
+    "gradle": "^1.0.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1"
