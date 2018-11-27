@@ -13,7 +13,11 @@ export class Cooking extends React.Component {
     setTimer(length){}
 
     fetchMeal() {
-        fetch(`/api/meals/${this.state.mealId}`)
+        fetch(`http://localhost:8080/api/meals/${this.state.mealId}`)
+        .then(res=>res.json())
+        .then(data => {
+            this.setState({meal: data})
+        })
     }
 
     render() {        
