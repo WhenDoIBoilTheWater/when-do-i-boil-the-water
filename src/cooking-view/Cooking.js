@@ -64,6 +64,7 @@ export class Cooking extends React.Component {
 
     displayDescription() {
         return (` ${this.state.description} `)
+
     }
 
     render() {       
