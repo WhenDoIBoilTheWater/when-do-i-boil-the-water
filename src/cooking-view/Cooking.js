@@ -18,14 +18,14 @@ export class Cooking extends React.Component {
     tick(){
         this.setState({globalSeconds: this.state.globalSeconds+1})
         this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when+1 === this.state.globalSeconds){
+            if (timer.when <= this.state.globalSeconds){
                 timer.callback()
             }
         })
     }
 
-    setTimer(when, callback){
-        const timer = {when, callback}
+    setTimer(when, description, callback){
+        const timer = {when, description, callback}
         this.state.arrayOfTimers.push(timer)
     }
 
@@ -37,6 +37,7 @@ export class Cooking extends React.Component {
                 meal: data
             })
             this.buildTimers()
+
         })
     }
 
@@ -45,15 +46,41 @@ export class Cooking extends React.Component {
         if(this.state.meal){
             this.state.meal.recipes.forEach(recipe=>{
                 recipe.steps.forEach(step=>{
-                    this.setTimer(this.state.meal.length - step.secBeforeEnd, function(){alert(step.description)})
+                    this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
+                        this.setState({
+                            description: step.description,
+                            nextStep: this.state.arrayOfTimers[1]
+                        })
+
+                        this.state.arrayOfTimers.shift();
+                    })
                 })
             })
+            this.state.arrayOfTimers.sort(function (a, b) {
+                return a.when - b.when;
+            });
         }
     }
 
-    render() {        
+    displayDescription() {
+        return (` ${this.state.description} `)
+    }
+
+    render() {       
+        let description = '' 
+        let when = ''
+        let nextStepIn = ''
+        if (this.state.nextStep){
+            description = this.state.nextStep.description;
+            when = this.state.nextStep.when - this.state.globalSeconds;
+            nextStepIn = ` ${description} in ${when} seconds`
+         }
         return (
-            <p>{this.state.globalSeconds}</p>
+            <section>
+                <h1>{this.state.globalSeconds}</h1>
+                <h2>{this.displayDescription()}</h2>
+                <h3>{nextStepIn}</h3>
+            </section>
             /*<CurrentStep />
             <NextSteps />
             <SpotifyWidget />*/
