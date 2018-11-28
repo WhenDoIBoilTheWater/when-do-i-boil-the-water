@@ -49,6 +49,16 @@ export class Cooking extends React.Component {
                 })
             })
         }
+            mealId: this.props.mealId
+        };
+
+        this.fetchMeal()
+      }   
+
+    setTimer(length){}
+
+    fetchMeal() {
+        fetch(`/api/meals/${this.state.mealId}`)
     }
 
     render() {        
