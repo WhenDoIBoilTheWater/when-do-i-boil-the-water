@@ -60,6 +60,16 @@ export class Cooking extends React.Component {
                 return a.when - b.when;
             });
         }
+            mealId: this.props.mealId
+        };
+
+        this.fetchMeal()
+      }   
+
+    setTimer(length){}
+
+    fetchMeal() {
+        fetch(`/api/meals/${this.state.mealId}`)
     }
 
     displayDescription() {
