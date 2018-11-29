@@ -16,12 +16,12 @@ export class Cooking extends React.Component {
       }   
 
     tick(){
-        this.setState({globalSeconds: this.state.globalSeconds+1})
         this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when <= this.state.globalSeconds){
+            if (timer.when == this.state.globalSeconds){
                 timer.callback()
             }
         })
+        this.setState({globalSeconds: this.state.globalSeconds+1})
     }
 
     setTimer(when, description, callback){
@@ -85,7 +85,9 @@ export class Cooking extends React.Component {
 
                 <ul>
                     {this.state.arrayOfTimers.map(timer => {
-                        return(<li>{timer.description}</li>)
+                        return(
+                            (<li>{timer.description}</li>)
+                        )
                     })}
                 </ul>
 
