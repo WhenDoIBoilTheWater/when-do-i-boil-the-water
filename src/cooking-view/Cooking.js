@@ -1,4 +1,5 @@
 import React from "react";
+import TimerCard from "./TimerCard.js";
 
 export class Cooking extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export class Cooking extends React.Component {
             meal: '',
             arrayOfTimers: [],
             globalSeconds: 0,
+            currentStepDescription: 'loading...'
         };
 
         this.fetchMeal()
@@ -17,15 +19,15 @@ export class Cooking extends React.Component {
 
     tick(){
         this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when == this.state.globalSeconds){
+            if (timer.when === this.state.globalSeconds){
                 timer.callback()
             }
         })
         this.setState({globalSeconds: this.state.globalSeconds+1})
     }
 
-    setTimer(when, description, callback){
-        const timer = {when, description, callback}
+    setTimer(when, description, recipe, callback){
+        const timer = {when, description, recipe, callback}
         this.state.arrayOfTimers.push(timer)
     }
 
@@ -47,7 +49,7 @@ export class Cooking extends React.Component {
             this.state.meal.recipes.forEach(recipe=>{
                 recipe.steps.forEach((step)=>{
 
-                    this.setTimer(this.state.meal.length - step.secBeforeEnd, `${recipe.name}: ${step.description}`, () => {
+                    this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, recipe.name, () => {
                         this.setState({
                             currentStepDescription: `${recipe.name}: ${step.description}`
                         })
@@ -57,7 +59,7 @@ export class Cooking extends React.Component {
                 })
 
             })
-            this.setTimer(this.state.meal.length, 'Serve', () => {
+            this.setTimer(this.state.meal.length, 'Serve', '',() => {
                 this.setState({
                     currentStepDescription: 'Serve'
                 })
@@ -86,7 +88,7 @@ export class Cooking extends React.Component {
                 <ul>
                     {this.state.arrayOfTimers.map(timer => {
                         return(
-                            (<li>{timer.description}</li>)
+                            (<TimerCard key={timer.description} when={timer.when} recipe={timer.recipe} description={timer.description} />)
                         )
                     })}
                 </ul>
