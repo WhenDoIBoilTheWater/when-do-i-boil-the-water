@@ -45,16 +45,19 @@ export class Cooking extends React.Component {
         setInterval(this.tick, 1000)
         if(this.state.meal){
             this.state.meal.recipes.forEach(recipe=>{
-                recipe.steps.forEach(step=>{
+                
+                recipe.steps.forEach((step)=>{
+
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                         this.setState({
-                            description: step.description,
+                            description: `${recipe.name}` + ': ' + `${step.description}`,
                             nextStep: this.state.arrayOfTimers[1]
                         })
 
                         this.state.arrayOfTimers.shift();
                     })
                 })
+
             })
             this.setTimer(this.state.meal.length, 'Serve!?', () => {
                 this.setState({
@@ -71,7 +74,7 @@ export class Cooking extends React.Component {
         }
     }
 
-    displayDescription() {
+    displayCurrentStep() {
         return (` ${this.state.description} `)
 
     }
@@ -88,7 +91,7 @@ export class Cooking extends React.Component {
         return (
             <section>
                 <h1>{this.state.globalSeconds}</h1>
-                <h2>{this.displayDescription()}</h2>
+                <h2>{this.displayCurrentStep()}</h2>
                 <h3>{nextStepIn}</h3>
             </section>
             /*<CurrentStep />
