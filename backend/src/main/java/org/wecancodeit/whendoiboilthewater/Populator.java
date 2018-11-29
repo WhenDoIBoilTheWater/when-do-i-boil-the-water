@@ -261,13 +261,13 @@ public class Populator implements CommandLineRunner {
 		stepRepo.save(step20);
 		stepRepo.save(step21);
 
-		Meal meal1 = new Meal();
+		Meal meal1 = new Meal("Hot Poppin Cheeto Rockin");
 		meal1.addRecipe(recipe1);
 		meal1.addRecipe(recipe2);
 
 		mealRepo.save(meal1);
 		
-		Meal meal2 = new Meal();
+		Meal meal2 = new Meal("Quick Beans n Tea");
 		meal2.addRecipe(recipe3);
 		meal2.addRecipe(recipe4);
 		
