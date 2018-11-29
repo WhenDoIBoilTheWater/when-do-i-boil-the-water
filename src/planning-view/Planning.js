@@ -26,8 +26,8 @@ export class Planning extends React.Component {
         }
         return(
             <ul>
-                {arrayOfMeals.forEach(meal => {
-                    <li onClick={this.props.setMealId(meal.id)}>{meal.id}</li>
+                {arrayOfMeals.map(meal => {
+                    return <li key={meal.id} onClick={() => {this.props.setMealId(meal.id)}}>{meal.id}</li>                
                 })}
             </ul>
         )
