@@ -97,6 +97,17 @@ public class ApiController {
 		return meal;
 	}
 	
+	@PostMapping("/api/meals/addRecipe")
+	public Meal addRecipeToMeal(@RequestBody String body) throws JSONException{
+		JSONObject json = new JSONObject(body);
+		Long mealId = json.getLong("mealId");
+		Long recipeId = json.getLong("recipeId");
+		Meal meal = mealRepo.findById(mealId).get();
+		Recipe recipe = recipeRepo.findById(recipeId).get();
+		meal.addRecipe(recipe);
+		mealRepo.save(meal);
+		return meal;
+	}
 	
 }
 
