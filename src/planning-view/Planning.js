@@ -44,10 +44,10 @@ export class Planning extends React.Component {
                         {arrayOfMeals.map(meal => {
                             return <li key={meal.id} onClick={() => {this.props.setMealId(meal.id)}}>{meal.name}</li>                
                         })}
-                        <li onClick={ () => {
+                        <li> Create Your Own <input type="text"></input><button onClick={ () => {
                             this.setState({view : 'build'})
                             this.fetchRecipes()
-                        }}> Create Your Own</li>
+                        }}>Start</button></li>
                     </ul>
                 </section>
             )
@@ -61,6 +61,10 @@ export class Planning extends React.Component {
                             return <li key={recipe.id} >{recipe.name}</li>                
                         })}
                     </ul>
+
+                    <div>
+                        Your Meal
+                    </div>
                 </section>
             )
         }

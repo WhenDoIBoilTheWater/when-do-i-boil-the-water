@@ -1,11 +1,18 @@
 package org.wecancodeit.whendoiboilthewater.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.wecancodeit.whendoiboilthewater.model.Ingredient;
 import org.wecancodeit.whendoiboilthewater.model.Meal;
@@ -78,6 +85,15 @@ public class ApiController {
 	@GetMapping("/api/ingredients/{ingredientId}")
 	public Ingredient showIngredient(@PathVariable(value = "ingredientId")Long ingredientId){
 		return ingredientRepo.findById(ingredientId).get();
+	}
+	
+	@PostMapping("/api/meal/add")
+	public Long createMeal(@RequestBody String body) throws JSONException {
+		JSONObject json = new JSONObject(body);
+		String name = json.getString("name");
+		Meal meal = new Meal(name);
+		mealRepo.save(meal);
+		return meal.getId();
 	}
 }
 
