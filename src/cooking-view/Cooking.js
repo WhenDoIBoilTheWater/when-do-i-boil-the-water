@@ -7,7 +7,7 @@ export class Cooking extends React.Component {
             mealId: this.props.mealId,
             meal: '',
             arrayOfTimers: [],
-            globalSeconds: 0
+            globalSeconds: 0,
         };
 
         this.fetchMeal()
@@ -16,12 +16,12 @@ export class Cooking extends React.Component {
       }   
 
     tick(){
-        this.setState({globalSeconds: this.state.globalSeconds+1})
         this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when <= this.state.globalSeconds){
+            if (timer.when == this.state.globalSeconds){
                 timer.callback()
             }
         })
+        this.setState({globalSeconds: this.state.globalSeconds+1})
     }
 
     setTimer(when, description, callback){
@@ -45,21 +45,21 @@ export class Cooking extends React.Component {
         setInterval(this.tick, 1000)
         if(this.state.meal){
             this.state.meal.recipes.forEach(recipe=>{
-                recipe.steps.forEach(step=>{
-                    this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
+                recipe.steps.forEach((step)=>{
+
+                    this.setTimer(this.state.meal.length - step.secBeforeEnd, `${recipe.name}: ${step.description}`, () => {
                         this.setState({
-                            description: step.description,
-                            nextStep: this.state.arrayOfTimers[1]
+                            currentStepDescription: `${recipe.name}: ${step.description}`
                         })
 
                         this.state.arrayOfTimers.shift();
                     })
                 })
+
             })
-            this.setTimer(this.state.meal.length, 'Serve!?', () => {
+            this.setTimer(this.state.meal.length, 'Serve', () => {
                 this.setState({
-                    description: 'Serve!?',
-                    nextStep: this.state.arrayOfTimers[1]
+                    currentStepDescription: 'Serve'
                 })
 
                 this.state.arrayOfTimers.shift();
@@ -71,25 +71,26 @@ export class Cooking extends React.Component {
         }
     }
 
-    displayDescription() {
-        return (` ${this.state.description} `)
+    displayCurrentStep() {
+        return (` ${this.state.currentStepDescription} `)
 
     }
 
-    render() {       
-        let description = '' 
-        let when = ''
-        let nextStepIn = ''
-        if (this.state.nextStep){
-            description = this.state.nextStep.description;
-            when = this.state.nextStep.when - this.state.globalSeconds;
-            nextStepIn = ` ${description} in ${when} seconds`
-         }
+    render() {
+
         return (
             <section>
                 <h1>{this.state.globalSeconds}</h1>
-                <h2>{this.displayDescription()}</h2>
-                <h3>{nextStepIn}</h3>
+                <h2>{this.displayCurrentStep()}</h2>
+
+                <ul>
+                    {this.state.arrayOfTimers.map(timer => {
+                        return(
+                            (<li>{timer.description}</li>)
+                        )
+                    })}
+                </ul>
+
             </section>
             /*<CurrentStep />
             <NextSteps />
