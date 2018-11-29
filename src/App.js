@@ -5,19 +5,23 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view : 'cooking',
+      view : 'planning',
       mealId : ''
     };
   }
 
   setMealId = (id) => {
-    this.setState({mealId: id})
+    this.setState({
+      mealId: id,
+      view: 'cooking'
+    })
+
   }
   render() {
 
     if(this.state.view === 'cooking'){
       return (
-      <Cooking mealId={44}/>
+      <Cooking mealId={this.state.mealId}/>
       )
     }
     else if (this.state.view === 'planning'){

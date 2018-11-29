@@ -14,9 +14,18 @@ public class Meal {
 	@GeneratedValue @Id private Long id;
 	@ManyToMany private Collection<Recipe> recipes = new HashSet<Recipe>();
 	private Long length;
-
+	private String name;
+	
 	public Meal() {}
 	
+	public Meal(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return name;
+	}
 
 	public Long getId() {
 		return id;

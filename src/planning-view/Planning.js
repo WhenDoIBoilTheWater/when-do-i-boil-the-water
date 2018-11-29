@@ -4,7 +4,7 @@ export class Planning extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            
+            view: 'premade'
         }
         this.fetchMeals()
     }
@@ -18,19 +18,52 @@ export class Planning extends React.Component {
         )
     }
 
+    fetchRecipes(){
+        fetch(`http://localhost:8080/api/recipes`).then(res => res.json()).then(data => {
+            this.setState({
+                arrayOfRecipes: data
+            })
+        }
+        )
+    }
 
     render(){
         let arrayOfMeals = []
+        let arrayOfRecipes = []
         if (this.state.arrayOfMeals){
             arrayOfMeals = this.state.arrayOfMeals;
         }
-        return(
-            <ul>
-                {arrayOfMeals.forEach(meal => {
-                    <li onClick={this.props.setMealId(meal.id)}>{meal.id}</li>
-                })}
-            </ul>
-        )
+        if (this.state.arrayOfRecipes){
+            arrayOfRecipes = this.state.arrayOfRecipes;
+        }
+        if(this.state.view === 'premade'){
+            return(
+                <section>
+                    Premade Meals:
+                    <ul>
+                        {arrayOfMeals.map(meal => {
+                            return <li key={meal.id} onClick={() => {this.props.setMealId(meal.id)}}>{meal.name}</li>                
+                        })}
+                        <li onClick={ () => {
+                            this.setState({view : 'build'})
+                            this.fetchRecipes()
+                        }}> Create Your Own</li>
+                    </ul>
+                </section>
+            )
+        }
+        if(this.state.view === 'build'){
+            return(
+                <section>
+                    Recipes go here!
+                    <ul>
+                        {arrayOfRecipes.map(recipe => {
+                            return <li key={recipe.id} >{recipe.name}</li>                
+                        })}
+                    </ul>
+                </section>
+            )
+        }
     }
 }
 
