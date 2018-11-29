@@ -87,14 +87,17 @@ public class ApiController {
 		return ingredientRepo.findById(ingredientId).get();
 	}
 	
-	@PostMapping("/api/meal/add")
-	public Long createMeal(@RequestBody String body) throws JSONException {
+	@PostMapping("/api/meals/add")
+	public Meal createMeal(@RequestBody String body) throws JSONException {
+		System.out.println(body);
 		JSONObject json = new JSONObject(body);
 		String name = json.getString("name");
 		Meal meal = new Meal(name);
 		mealRepo.save(meal);
-		return meal.getId();
+		return meal;
 	}
+	
+	
 }
 
 
