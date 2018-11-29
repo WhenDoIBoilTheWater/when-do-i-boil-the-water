@@ -9,6 +9,7 @@ export class Cooking extends React.Component {
             meal: '',
             arrayOfTimers: [],
             globalSeconds: 0,
+            currentStepDescription: 'loading...'
         };
 
         this.fetchMeal()
@@ -18,7 +19,7 @@ export class Cooking extends React.Component {
 
     tick(){
         this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when == this.state.globalSeconds){
+            if (timer.when === this.state.globalSeconds){
                 timer.callback()
             }
         })

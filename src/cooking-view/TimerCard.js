@@ -6,19 +6,32 @@ export class TimerCard extends React.Component {
         this.state = {
         	recipe: this.props.recipe,
         	description: this.props.description,
-        	when: this.props.when
+        	when: this.props.when,
+        	whenOClock: ''
         }
+
+    }
+
+	componentDidMount() {
+		this.setEndOClock()
+	}
+
+    setEndOClock() {
+        let timeObject = new Date(); 
+        timeObject = new Date(timeObject.getTime() + 1000*this.state.when);
+        let d = (timeObject.toLocaleTimeString());
+        this.setState({whenOClock: d})
     }
 
     render() {
-    	let date = Date.now();
 
-    	console.log(date)
 
     	return(
     		<section>
 	    		<p>{this.state.recipe}:</p>
-	    		<h3>{this.state.description}</h3>
+	    		<p>{this.state.description}</p>
+	    		<p>{this.state.whenOClock}</p>
+	    		<br />
     		</section>
     	)
     }
