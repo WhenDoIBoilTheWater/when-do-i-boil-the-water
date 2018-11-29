@@ -23,8 +23,20 @@ export class Planning extends React.Component {
             this.setState({
                 arrayOfRecipes: data
             })
-        }
-        )
+            this.fetchAddMeal(this.state.mealName)
+        })
+    }
+
+    fetchAddMeal(mealName){
+        fetch(`http://localhost:8080/api/meals/add`, {
+            method : "POST",
+            body : JSON.stringify({name : this.state.mealName})
+        })
+        .then(res => res.json())
+        .then(data => this.setState({
+            view : 'build', 
+            newMeal : data
+        }))
     }
 
     render(){
@@ -44,15 +56,18 @@ export class Planning extends React.Component {
                         {arrayOfMeals.map(meal => {
                             return <li key={meal.id} onClick={() => {this.props.setMealId(meal.id)}}>{meal.name}</li>                
                         })}
-                        <li onClick={ () => {
-                            this.setState({view : 'build'})
+                        <li> Create Your Own <input id="mealName" type="text"></input><button onClick={ () => {
+                            this.setState({
+                                mealName : document.querySelector('#mealName').value
+                            })
                             this.fetchRecipes()
-                        }}> Create Your Own</li>
+                        }}>Start</button></li>
                     </ul>
                 </section>
             )
         }
         if(this.state.view === 'build'){
+            
             return(
                 <section>
                     Recipes go here!
@@ -61,6 +76,10 @@ export class Planning extends React.Component {
                             return <li key={recipe.id} >{recipe.name}</li>                
                         })}
                     </ul>
+
+                    <div>
+                        {this.state.newMeal.name}
+                    </div>
                 </section>
             )
         }
