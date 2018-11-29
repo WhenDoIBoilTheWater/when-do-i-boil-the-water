@@ -47,7 +47,7 @@ export class Planning extends React.Component {
                 recipeId : recipeToAdd
             })
         }).then(res => res.json()).then(data => this.setState({newMeal : data}))
-        console.log(recipeToAdd)
+
     }
 
     render(){
