@@ -45,7 +45,6 @@ export class Cooking extends React.Component {
         setInterval(this.tick, 1000)
         if(this.state.meal){
             this.state.meal.recipes.forEach(recipe=>{
-                
                 recipe.steps.forEach((step)=>{
 
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
