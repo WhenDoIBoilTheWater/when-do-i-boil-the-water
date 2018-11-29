@@ -49,7 +49,7 @@ export class Cooking extends React.Component {
 
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                         this.setState({
-                            description: `${recipe.name}` + ': ' + `${step.description}`,
+                            currentStepDescription: `${recipe.name}` + ': ' + `${step.description}`,
                             nextStep: this.state.arrayOfTimers[1]
                         })
 
@@ -58,9 +58,9 @@ export class Cooking extends React.Component {
                 })
 
             })
-            this.setTimer(this.state.meal.length, 'Serve!?', () => {
+            this.setTimer(this.state.meal.length, 'Serve', () => {
                 this.setState({
-                    description: 'Serve!?',
+                    currentStepDescription: 'Serve',
                     nextStep: this.state.arrayOfTimers[1]
                 })
 
@@ -74,7 +74,7 @@ export class Cooking extends React.Component {
     }
 
     displayCurrentStep() {
-        return (` ${this.state.description} `)
+        return (` ${this.state.currentStepDescription} `)
 
     }
 
