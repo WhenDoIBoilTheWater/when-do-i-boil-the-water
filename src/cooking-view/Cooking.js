@@ -56,6 +56,15 @@ export class Cooking extends React.Component {
                     })
                 })
             })
+            this.setTimer(this.state.meal.length, 'Serve!?', () => {
+                this.setState({
+                    description: 'Serve!?',
+                    nextStep: this.state.arrayOfTimers[1]
+                })
+
+                this.state.arrayOfTimers.shift();
+            })
+            
             this.state.arrayOfTimers.sort(function (a, b) {
                 return a.when - b.when;
             });

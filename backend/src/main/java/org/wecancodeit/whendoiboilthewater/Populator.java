@@ -1,9 +1,5 @@
 package org.wecancodeit.whendoiboilthewater;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
@@ -243,7 +239,7 @@ public class Populator implements CommandLineRunner {
 		recipe4.addStep(step20);
 		step20.addRecipe(recipe4);
 		recipe4.addStep(step21);
-		step12.addRecipe(recipe4);
+		step21.addRecipe(recipe4);
 
 		recipe4.addIngredient(hotDog);
 		hotDog.addRecipe(recipe4);
@@ -270,6 +266,12 @@ public class Populator implements CommandLineRunner {
 		meal1.addRecipe(recipe2);
 
 		mealRepo.save(meal1);
+		
+		Meal meal2 = new Meal();
+		meal2.addRecipe(recipe3);
+		meal2.addRecipe(recipe4);
+		
+		mealRepo.save(meal2);
 
 	}
 
