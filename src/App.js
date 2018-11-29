@@ -21,7 +21,7 @@ export class App extends React.Component {
 
     if(this.state.view === 'cooking'){
       return (
-      <Cooking mealId={44}/>
+      <Cooking mealId={this.state.mealId}/>
       )
     }
     else if (this.state.view === 'planning'){
