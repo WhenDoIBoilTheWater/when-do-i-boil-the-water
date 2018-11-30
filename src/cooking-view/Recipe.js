@@ -47,7 +47,6 @@ export class Recipe extends React.Component {
                     currentStepLength: length
                 })
                 this.state.arrayOfTimers.shift()
-
             })
         })
         setInterval(this.tick, 1000)
