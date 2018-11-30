@@ -5,7 +5,6 @@ export class TimerCard extends React.Component {
 	constructor(props) {
         super(props)
         this.state = {
-        	recipe: this.props.recipe,
         	description: this.props.description,
         	when: this.props.when,
         	whenOClock: ''
@@ -29,7 +28,6 @@ export class TimerCard extends React.Component {
 
     	return(
     		<section className="timer-card">
-	    		<p>{this.state.recipe}:</p>
 	    		<p>{this.state.description}</p>
 	    		<p>{this.state.whenOClock}</p>
 	    		<br />

@@ -10,7 +10,6 @@ class CurrentStepCard extends React.Component {
     render(){
         return(
             <div className="current-step-card">
-                <p>{this.props.recipe}:</p>
                 <h1>{this.props.description}</h1>
                 <BarTimer length={this.props.length} />
             </div>
