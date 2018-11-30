@@ -19,12 +19,14 @@ export class Recipe extends React.Component {
     }   
 
     tick =()=>{
-        this.state.arrayOfTimers.forEach(timer=>{
-            if (timer.when === this.state.globalSeconds){
-                timer.callback()
-            }
-        })
-        this.setState({globalSeconds: this.state.globalSeconds+1})
+        if (this.state.arrayOfTimers[0]){
+            this.state.arrayOfTimers.forEach(timer=>{
+                if (timer.when === this.state.globalSeconds){
+                    timer.callback()
+                }
+            })
+            this.setState({globalSeconds: this.state.globalSeconds+1})
+        }
     }
 
     setTimer(when, description, callback){
@@ -33,6 +35,7 @@ export class Recipe extends React.Component {
     }
 
     buildTimers(){
+        //set a timer for each step
         this.state.recipe.steps.forEach((step)=>{
             this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                 //callback function:
@@ -51,9 +54,14 @@ export class Recipe extends React.Component {
         })
         setInterval(this.tick, 1000)
 
-        this.setTimer(this.state.meal.length, 'Serve', '',() => {
+        //sort the timers by when they go off
+        this.state.arrayOfTimers.sort(function (a, b) {
+            return a.when - b.when;
+        });
+
+        //set a timer for the last step, which is to serve the food
+        this.setTimer(this.state.meal.length, 'Serve', () => {
             this.setState({
-               currentStepRecipe: 'And finally',
                currentStepDescription: 'Serve!',
                currentStepLength: 0
            })
@@ -61,9 +69,6 @@ export class Recipe extends React.Component {
             this.state.arrayOfTimers.shift();
         })
 
-        this.state.arrayOfTimers.sort(function (a, b) {
-            return a.when - b.when;
-        });
     }
 
 
