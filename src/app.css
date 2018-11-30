@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 :root {
+	font-family: 'Roboto', sans-serif;
 	--light-grey: #eee;
     --med-grey: #dddddd;
     --color-1: blue;

@@ -1,53 +1,54 @@
 import React from "react";
 import TimerCard from "./TimerCard.js"
 import CurrentStepCard from "./CurrentStepCard"
+import './css/recipe.css'
 
 export class Recipe extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipe: this.props.recipe,
-            meal: this.props.meal,
-            arrayOfTimers: [],
-            globalSeconds: 0,
-            currentStepDescription: 'loading...'
-        };
+	constructor(props) {
+		super(props);
+		this.state = {
+			recipe: this.props.recipe,
+			meal: this.props.meal,
+			arrayOfTimers: [],
+			globalSeconds: 0,
+			currentStepDescription: 'loading...'
+		};
 
-        this.buildTimers()
+		this.buildTimers()
 
-        this.tick = this.tick.bind(this);
-    }   
+		this.tick = this.tick.bind(this);
+	}   
 
-    tick =()=>{
-        if (this.state.arrayOfTimers[0]){
-            this.state.arrayOfTimers.forEach(timer=>{
-                if (timer.when === this.state.globalSeconds){
-                    timer.callback()
-                }
-            })
-            this.setState({globalSeconds: this.state.globalSeconds+1})
-        }
-    }
+	tick =()=>{
+		if (this.state.arrayOfTimers[0]){
+			this.state.arrayOfTimers.forEach(timer=>{
+				if (timer.when === this.state.globalSeconds){
+					timer.callback()
+				}
+			})
+			this.setState({globalSeconds: this.state.globalSeconds+1})
+		}
+	}
 
-    setTimer(when, description, callback){
-        const timer = {when, description, callback}
-        this.state.arrayOfTimers.push(timer)
-    }
+	setTimer(when, description, callback){
+		const timer = {when, description, callback}
+		this.state.arrayOfTimers.push(timer)
+	}
 
-    buildTimers(){
+	buildTimers(){
         //set a timer for each step
         this.state.recipe.steps.forEach((step)=>{
-            this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
+        	this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                 //callback function:
                 let length
                 if(this.state.arrayOfTimers[1]){
-                    length = this.state.arrayOfTimers[1].when - this.state.globalSeconds
+                	length = this.state.arrayOfTimers[1].when - this.state.globalSeconds
                 } else {
-                    length = 0
+                	length = 0
                 }
                 this.setState({
-                    currentStepDescription: step.description,
-                    currentStepLength: length
+                	currentStepDescription: step.description,
+                	currentStepLength: length
                 })
                 this.state.arrayOfTimers.shift()
             })
@@ -56,17 +57,17 @@ export class Recipe extends React.Component {
 
         //sort the timers by when they go off
         this.state.arrayOfTimers.sort(function (a, b) {
-            return a.when - b.when;
+        	return a.when - b.when;
         });
 
         //set a timer for the last step, which is to serve the food
         this.setTimer(this.state.meal.length, 'Serve', () => {
-            this.setState({
-               currentStepDescription: 'Serve!',
-               currentStepLength: 0
-           })
+        	this.setState({
+        		currentStepDescription: 'Serve!',
+        		currentStepLength: 0
+        	})
 
-            this.state.arrayOfTimers.shift();
+        	this.state.arrayOfTimers.shift();
         })
 
     }
@@ -76,24 +77,26 @@ export class Recipe extends React.Component {
     render() {
     	let currentStep
     	if (this.state.currentStepDescription !== 'loading...'){
-            currentStep = <CurrentStepCard description={this.state.currentStepDescription} length={this.state.currentStepLength} />
-        }
+    		currentStep = <CurrentStepCard description={this.state.currentStepDescription} length={this.state.currentStepLength} />
+    	}
 
-        return (
-            <section>
-            <h4>{this.state.globalSeconds}</h4>
-            {currentStep}
-            <ul className="list-of-steps">
-            {this.state.arrayOfTimers.map(timer => {
-                return(
-                    (<TimerCard key={timer.description} when={timer.when} description={timer.description} />)
-                    )
-            })}
-            </ul>
-
-            </section>
-            /*<SpotifyWidget />*/
-            );
+    	return (
+    		<section className="recipe">
+	    		<h4>{this.state.globalSeconds}</h4>
+	    		<h1>{this.state.recipe.name}</h1>
+	    		<div className="steps-container">
+		    		{currentStep}
+		    		<ul className="list-of-steps">
+			    		{this.state.arrayOfTimers.map(timer => {
+			    			return(
+			    				(<TimerCard key={timer.description} when={timer.when} description={timer.description} />)
+			    				)
+			    		})}
+		    		</ul>
+	    		</div>
+    		</section>
+    		/*<SpotifyWidget />*/
+    		);
     }
 }
 
