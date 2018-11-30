@@ -5,42 +5,44 @@ import Recipe from "./cooking-view/Recipe.js"
 import './app.css'
 
 export class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			view : 'planning',
-			meal: {}
-		};
+    constructor(props) {
+        super(props);
+        this.state = {
+            view: 'planning',
+            meal: {}
+        };
 
-		// this.fetchATestMeal()
-	}
+        // this.fetchATestMeal()
+    }
 
-	// fetchATestMeal(){
-	// 	fetch('http://localhost:8080/api/meals/44').then(res => res.json()).then(data=>{
-	// 		this.setState({meal: data, view: 'cooking'})
-	// 	})
-	// }
+    // fetchATestMeal(){
+    // 	fetch('http://localhost:8080/api/meals/44').then(res => res.json()).then(data=>{
+    // 		this.setState({meal: data, view: 'cooking'})
+    // 	})
+    // }
 
-	setMeal = (meal) => {
-		this.setState({
-			meal: meal,
-			view: 'cooking'
-		})
+    setMeal = (newMeal) => {
+        this.setState({
+            meal: newMeal,
+            view: 'cooking'
+        })
+        console.log(newMeal)
+    }
+    render() {
 
-	}
-	render() {
-
-		if(this.state.view === 'cooking'){
-			this.state.meal.recipes.forEach(recipe =>{
-				return (
-					<Recipe recipe={recipe} meal={this.state.meal} />
-					)
-			})
-		}
-		else if (this.state.view === 'planning'){
-			return <Planning setMealId={this.setMealId} />
-		}
-	}
+        if (this.state.view === 'cooking') {
+            return (
+                <section>
+                    {this.state.meal.recipes.map(recipe =>{
+                        return <Recipe recipe={recipe} meal={this.state.meal} />
+                    })}
+                </section>
+            )
+        }
+        if (this.state.view === 'planning') {
+            return <Planning setMeal={this.setMeal} />
+        }
+    }
 }
 
 export default App
