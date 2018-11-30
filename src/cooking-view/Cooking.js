@@ -51,8 +51,8 @@ export class Cooking extends React.Component {
                 recipe.steps.forEach((step)=>{
 
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, recipe.name, () => {
-                    	//callback function:
                         this.state.arrayOfTimers.shift();
+                    	//callback function:
                         this.setState({
                         	currentStepRecipe: recipe.name,
                             currentStepDescription: step.description,

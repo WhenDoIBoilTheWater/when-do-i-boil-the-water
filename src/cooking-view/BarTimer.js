@@ -13,7 +13,7 @@ class BarTimer extends React.Component {
         const styles = {
             // animationDuration: '5s'
             animationDuration: length,
-            width: '0%'
+            // width: '0%'
         }
 
         return(
