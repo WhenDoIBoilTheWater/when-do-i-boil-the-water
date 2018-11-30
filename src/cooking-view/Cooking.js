@@ -51,20 +51,23 @@ export class Cooking extends React.Component {
                 recipe.steps.forEach((step)=>{
 
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, recipe.name, () => {
+                    	//callback function:
+                        this.state.arrayOfTimers.shift();
                         this.setState({
                         	currentStepRecipe: recipe.name,
                             currentStepDescription: step.description,
-                            currentStepLength: this.state.arrayOfTimers[2].when - this.state.globalSeconds
+                            currentStepLength: this.state.arrayOfTimers[1].when - this.state.globalSeconds
                         })
 
-                        this.state.arrayOfTimers.shift();
                     })
                 })
 
             })
             this.setTimer(this.state.meal.length, 'Serve', '',() => {
                 this.setState({
-                    currentStepDescription: 'Serve'
+                	currentStepRecipe: 'And finally',
+                    currentStepDescription: 'Serve!',
+                    currentStepLength: 0
                 })
 
                 this.state.arrayOfTimers.shift();
@@ -96,9 +99,7 @@ export class Cooking extends React.Component {
                 </ul>
 
             </section>
-            /*<CurrentStep />
-            <NextSteps />
-            <SpotifyWidget />*/
+            /*<SpotifyWidget />*/
         );
   }
 }

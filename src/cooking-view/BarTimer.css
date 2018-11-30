@@ -1,5 +1,6 @@
 :root{
-    --color-1: black;
+    --color-1: blue;
+    --color-2: #dddddd;
 }
 
 .bar-timer-bar{
@@ -11,7 +12,8 @@
 }
 
 .bar-timer-field{
-    background-color: grey;
+    background-color: var(--color-2);
+    position: relative;
     width: 100wv;
 }
 
