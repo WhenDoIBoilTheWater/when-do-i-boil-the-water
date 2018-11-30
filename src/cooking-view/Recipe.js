@@ -87,4 +87,4 @@ export class Recipe extends React.Component {
     }
 }
 
-export default Cooking
+export default Recipe

@@ -1,6 +1,7 @@
 import React from "react";
 import Cooking from "./cooking-view/Cooking.js"
 import Planning from "./planning-view/Planning.js"
+import Recipe from "./cooking-view/Recipe.js"
 import './app.css'
 
 export class App extends React.Component {
@@ -10,7 +11,15 @@ export class App extends React.Component {
 			view : 'planning',
 			meal: {}
 		};
+
+		// this.fetchATestMeal()
 	}
+
+	// fetchATestMeal(){
+	// 	fetch('http://localhost:8080/api/meals/44').then(res => res.json()).then(data=>{
+	// 		this.setState({meal: data, view: 'cooking'})
+	// 	})
+	// }
 
 	setMeal = (meal) => {
 		this.setState({
