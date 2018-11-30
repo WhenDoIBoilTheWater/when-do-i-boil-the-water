@@ -8,7 +8,7 @@ export class Recipe extends React.Component {
         this.state = {
             recipe: this.props.recipe,
             meal: this.props.meal,
-            arrayOfTimers: [''],
+            arrayOfTimers: [],
             globalSeconds: 0,
             currentStepDescription: 'loading...'
         };
@@ -18,7 +18,7 @@ export class Recipe extends React.Component {
         this.tick = this.tick.bind(this);
     }   
 
-    tick(){
+    tick =()=>{
         this.state.arrayOfTimers.forEach(timer=>{
             if (timer.when === this.state.globalSeconds){
                 timer.callback()
@@ -33,18 +33,23 @@ export class Recipe extends React.Component {
     }
 
     buildTimers(){
-        setInterval(this.tick, 1000)
         this.state.recipe.steps.forEach((step)=>{
             this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
-                this.state.arrayOfTimers.shift();
-                	//callback function:
-                    this.setState({
-                        currentStepDescription: step.description,
-                        currentStepLength: this.state.arrayOfTimers[1].when - this.state.globalSeconds
-                    })
-
+                //callback function:
+                let length
+                if(this.state.arrayOfTimers[1]){
+                    length = this.state.arrayOfTimers[1].when - this.state.globalSeconds
+                } else {
+                    length = 0
+                }
+                this.setState({
+                    currentStepDescription: step.description,
+                    currentStepLength: length
                 })
+                this.state.arrayOfTimers.shift()
+            })
         })
+        setInterval(this.tick, 1000)
 
         this.setTimer(this.state.meal.length, 'Serve', '',() => {
             this.setState({

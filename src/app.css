@@ -3,3 +3,8 @@
     --med-grey: #dddddd;
     --color-1: blue;
 }
+
+section {
+	display: flex;
+	flex-direction: row;
+}
