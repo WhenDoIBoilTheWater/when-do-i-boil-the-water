@@ -2,19 +2,25 @@
     --color-1: black;
 }
 
-.bar{
+.bar-timer-bar{
     animation-name: 'barTimerAnimation';
+    animation-iteration-count: infinite;
     background-color: var(--color-1);
     height: 5px;
 }
 
+.bar-timer-field{
+    background-color: grey;
+    width: 100wv;
+}
+
 @keyframes barTimerAnimation {
-    0%{
-        width: 0%;
+    from {
+        width: 0vw;
     }
 
-    100% {
-        width: 100%;
+    to {
+        width: 100vw;
     }
 }
 
