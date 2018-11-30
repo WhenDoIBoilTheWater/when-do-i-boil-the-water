@@ -86,7 +86,7 @@ export class Cooking extends React.Component {
 
     render() {
     	let currentStep
-    	if (this.state.currentStepDescription != 'loading...'){
+    	if (this.state.currentStepDescription !== 'loading...'){
             currentStep = <CurrentStepCard recipe={this.state.currentStepRecipe} description={this.state.currentStepDescription} length={this.state.currentStepLength} />
     	}
 

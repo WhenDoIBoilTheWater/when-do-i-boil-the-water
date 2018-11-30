@@ -1,4 +1,5 @@
 import React from "react";
+import './css/timerCard.css'
 
 export class TimerCard extends React.Component {
 	constructor(props) {
@@ -27,7 +28,7 @@ export class TimerCard extends React.Component {
 
 
     	return(
-    		<section>
+    		<section className="timer-card">
 	    		<p>{this.state.recipe}:</p>
 	    		<p>{this.state.description}</p>
 	    		<p>{this.state.whenOClock}</p>

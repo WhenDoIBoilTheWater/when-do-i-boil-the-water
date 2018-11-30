@@ -1,6 +1,8 @@
 import React from "react";
 import Cooking from "./cooking-view/Cooking.js"
 import Planning from "./planning-view/Planning.js"
+import './app.css'
+
 export class App extends React.Component {
   constructor(props) {
     super(props);
