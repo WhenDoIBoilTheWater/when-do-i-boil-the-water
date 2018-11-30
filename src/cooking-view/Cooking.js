@@ -1,5 +1,6 @@
 import React from "react";
 import TimerCard from "./TimerCard.js";
+import BarTimer from "./BarTimer.js"
 
 export class Cooking extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export class Cooking extends React.Component {
         this.state = {
             mealId: this.props.mealId,
             meal: '',
-            arrayOfTimers: [],
+            arrayOfTimers: [''],
             globalSeconds: 0,
             currentStepDescription: 'loading...'
         };
@@ -84,7 +85,7 @@ export class Cooking extends React.Component {
             <section>
                 <h1>{this.state.globalSeconds}</h1>
                 <h2>{this.displayCurrentStep()}</h2>
-
+                <BarTimer endTime={this.state.arrayOfTimers[0].when - this.state.globalSeconds}/>
                 <ul>
                     {this.state.arrayOfTimers.map(timer => {
                         return(

@@ -1,0 +1,20 @@
+:root{
+    --color-1: black;
+}
+
+.bar{
+    animation-name: 'barTimerAnimation';
+    background-color: var(--color-1);
+    height: 5px;
+}
+
+@keyframes barTimerAnimation {
+    0%{
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
