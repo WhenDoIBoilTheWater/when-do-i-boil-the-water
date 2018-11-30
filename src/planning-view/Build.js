@@ -42,7 +42,7 @@ class Build extends React.Component {
                         })
                         }
                     </ul>
-                    <button onClick={() => { this.props.setMeal(this.props.newMeal.id) }}>Cook</button>
+                    <button onClick={() => {this.props.setMeal(this.state.newMeal) }}>Cook</button>
                 </div>
             </section>
         )
