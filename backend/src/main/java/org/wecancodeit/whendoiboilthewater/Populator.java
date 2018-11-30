@@ -68,7 +68,7 @@ public class Populator implements CommandLineRunner {
 		Step step1 = new Step(600L, "boil the pop rocks");
 		Step step2 = new Step(300L, "dice the hot dogs");
 		Step step3 = new Step(120L, "stir in the hot dogs");
-		Step cheetoStep1 = new Step(608L, "Fry Cheeto");
+		Step cheetoStep1 = new Step(66L, "Fry Cheeto");
 		Step step4 = new Step(65L, "boil all them beans hard AF");
 		Step step5 = new Step(60L, "drain all them beans");
 		Step step6 = new Step(55L, "add the Navy Bean to the bowl");

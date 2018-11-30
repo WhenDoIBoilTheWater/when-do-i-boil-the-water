@@ -1,6 +1,6 @@
 import React from "react";
-import TimerCard from "./TimerCard.js";
-import BarTimer from "./BarTimer.js"
+import TimerCard from "./TimerCard.js"
+import CurrentStepCard from "./CurrentStepCard"
 
 export class Cooking extends React.Component {
     constructor(props) {
@@ -51,18 +51,23 @@ export class Cooking extends React.Component {
                 recipe.steps.forEach((step)=>{
 
                     this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, recipe.name, () => {
+                        this.state.arrayOfTimers.shift();
+                    	//callback function:
                         this.setState({
-                            currentStepDescription: `${recipe.name}: ${step.description}`
+                        	currentStepRecipe: recipe.name,
+                            currentStepDescription: step.description,
+                            currentStepLength: this.state.arrayOfTimers[1].when - this.state.globalSeconds
                         })
 
-                        this.state.arrayOfTimers.shift();
                     })
                 })
 
             })
             this.setTimer(this.state.meal.length, 'Serve', '',() => {
                 this.setState({
-                    currentStepDescription: 'Serve'
+                	currentStepRecipe: 'And finally',
+                    currentStepDescription: 'Serve!',
+                    currentStepLength: 0
                 })
 
                 this.state.arrayOfTimers.shift();
@@ -74,18 +79,21 @@ export class Cooking extends React.Component {
         }
     }
 
-    displayCurrentStep() {
-        return (` ${this.state.currentStepDescription} `)
+    // displayCurrentStep() {
+    //     return (` ${this.state.currentStepDescription} `)
 
-    }
+    // }
 
     render() {
+    	let currentStep
+    	if (this.state.currentStepDescription !== 'loading...'){
+            currentStep = <CurrentStepCard recipe={this.state.currentStepRecipe} description={this.state.currentStepDescription} length={this.state.currentStepLength} />
+    	}
 
         return (
             <section>
                 <h1>{this.state.globalSeconds}</h1>
-                <h2>{this.displayCurrentStep()}</h2>
-                <BarTimer endTime={this.state.arrayOfTimers[0].when - this.state.globalSeconds}/>
+                {currentStep}
                 <ul>
                     {this.state.arrayOfTimers.map(timer => {
                         return(
@@ -95,9 +103,7 @@ export class Cooking extends React.Component {
                 </ul>
 
             </section>
-            /*<CurrentStep />
-            <NextSteps />
-            <SpotifyWidget />*/
+            /*<SpotifyWidget />*/
         );
   }
 }
