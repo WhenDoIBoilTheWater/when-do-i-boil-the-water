@@ -85,11 +85,15 @@ export class Cooking extends React.Component {
     // }
 
     render() {
+    	let currentStep
+    	if (this.state.currentStepDescription != 'loading...'){
+            currentStep = <CurrentStepCard recipe={this.state.currentStepRecipe} description={this.state.currentStepDescription} length={this.state.currentStepLength} />
+    	}
 
         return (
             <section>
                 <h1>{this.state.globalSeconds}</h1>
-                <CurrentStepCard recipe={this.state.currentStepRecipe} description={this.state.currentStepDescription} length={this.state.currentStepLength} />
+                {currentStep}
                 <ul>
                     {this.state.arrayOfTimers.map(timer => {
                         return(
