@@ -22,21 +22,21 @@ npm-debug.log.*
 ######################
 # Eclipse
 ######################
-backend/*.pydevproject
-backend/.project
-backend/.metadata
-backend/tmp/
-backend/tmp/**/*
-backend/*.tmp
-backend/*.bak
-backend/*.swp
-backend/*~.nib
-backend/local.properties
-backend/.classpath
-backend/.settings/
-backend/.loadpath
-backend/.factorypath
-backend//src/main/resources/rebel.xml
+*.pydevproject
+.project
+.metadata
+tmp/
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.factorypath
+/src/main/resources/rebel.xml
 # External tool builders
 backend/.externalToolBuilders/**
 # Locally stored "Eclipse launch configurations"
