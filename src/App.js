@@ -42,7 +42,12 @@ export class App extends React.Component {
             )
         }
         if (this.state.view === 'planning') {
-            return <Planning setMeal={this.setMeal} />
+            return (
+                <section className="planning-view">
+                    <Planning setMeal={this.setMeal} />
+                    <SpotifyWidget />
+                </section>
+            )
         }
     }
 }

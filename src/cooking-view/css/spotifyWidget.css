@@ -32,6 +32,7 @@
 }
 
 .spotify-widget {
+
 	background-color: var(--spotify-grey);
 	color: white;
 	display: flex;
