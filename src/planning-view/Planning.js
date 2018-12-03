@@ -57,13 +57,13 @@ export class Planning extends React.Component {
         if(this.state.view === 'premade'){
             return(
                 <section className="planning-section">
-                    Premade Meals:
+                    <h2>Premade Meals:</h2>
                     <ul className="meals-ul">
                         {arrayOfMeals.map(meal => {
                             return <li className="meal-li" key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
                         })}
                     </ul>
-                    <section className="create-a-meal-section"> Create Your Own <input className="new-meal-name-field" id="mealName" type="text"></input><button className="new-meal-button" onClick={ () => {
+                    <section className="create-a-meal-section"> <h2>Create Your Own</h2> <input className="new-meal-name-field" id="mealName" type="text"></input><button className="new-meal-button" onClick={ () => {
                         this.setState({
                             mealName : document.querySelector('#mealName').value
                         })

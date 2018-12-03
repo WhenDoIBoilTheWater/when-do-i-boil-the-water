@@ -1,5 +1,6 @@
 .timer-card {
 	border: 1px solid var(--med-grey);
+	border-radius: var(--border-radius);
 	display: block;
 	min-width: 30vw;
 }

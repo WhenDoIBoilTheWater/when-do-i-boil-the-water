@@ -28,7 +28,7 @@ class Build extends React.Component {
     render() {
         return (
             <section className="build-meal-section">
-                Recipes go here!
+                <h2>Which recipes would you like to cook?:</h2>
                     <ul className="list-of-recipes">
                     {this.props.arrayOfRecipes.map(recipe => {
                         return <li className="recipe-li" key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
@@ -36,10 +36,10 @@ class Build extends React.Component {
                 </ul>
 
                 <div className="new-meal-summary">
-                    {this.state.newMeal.name} {this.state.newMeal.length} Seconds
+                    <h3>{this.state.newMeal.name}: {this.state.newMeal.length} seconds</h3>
                         <ul className="list-of-added-recipes">
                         {this.state.newMeal.recipes.map(recipe => {
-                            return <li className="added-recipe-li" key={recipe.id} >{recipe.name}<span>[X]</span></li>
+                            return <li className="added-recipe-li" key={recipe.id} >{recipe.name}<span> &times; </span></li>
                         })
                         }
                     </ul>

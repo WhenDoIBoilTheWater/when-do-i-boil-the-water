@@ -1,0 +1,44 @@
+:root{
+	--spotify-grey: #191414;
+}
+
+.album-art {
+	background-color: grey;
+	text-align: center;
+	width: 3rem;
+}
+
+.middle-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.pause-button{
+	color: white;
+	background-color: var(--spotify-grey);
+	border: none;
+}
+
+.playbar-background {
+	height: 5px;
+	width: 100%;
+	background-color: var(--spotify-grey);
+}
+
+.playbar-foreground {
+	height: 4px;
+	width: 40%;
+	background-color: #1db954;
+}
+
+.spotify-widget {
+	background-color: var(--spotify-grey);
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100vw;
+
+	position: fixed;
+	bottom: 0;
+}
