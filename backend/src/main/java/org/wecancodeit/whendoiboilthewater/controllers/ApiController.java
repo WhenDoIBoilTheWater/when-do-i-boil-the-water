@@ -109,6 +109,13 @@ public class ApiController {
 		return meal;
 	}
 	
+	@PostMapping("/api/meals/removeRecipe")
+	public void removeRecipe(@RequestBody String body) throws JSONException{
+		JSONObject json = new JSONObject(body);
+		Long mealId = json.getLong("mealId");
+		mealRepo.delete(mealRepo.findById(mealId).get());
+	}
+	
 }
 
 
