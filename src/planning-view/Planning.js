@@ -1,5 +1,6 @@
 import React from 'react'
 import Build from './Build.js'
+import './css/planning.css'
 
 export class Planning extends React.Component {
     constructor(props){
