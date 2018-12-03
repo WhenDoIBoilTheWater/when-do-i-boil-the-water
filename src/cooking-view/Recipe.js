@@ -17,7 +17,7 @@ export class Recipe extends React.Component {
 		this.buildTimers()
 
 		this.tick = this.tick.bind(this);
-	}   
+	}
 
 	tick =()=>{
 		if (this.state.arrayOfTimers[0]){
