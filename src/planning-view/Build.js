@@ -26,23 +26,23 @@ class Build extends React.Component {
 
     render() {
         return (
-            <section>
+            <section className="build-meal-section">
                 Recipes go here!
-                    <ul>
+                    <ul className="list-of-recipes">
                     {this.props.arrayOfRecipes.map(recipe => {
-                        return <li key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
+                        return <li className="recipe-li" key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
                     })}
                 </ul>
 
-                <div>
+                <div className="new-meal-summary">
                     {this.state.newMeal.name} {this.state.newMeal.length} Seconds
-                        <ul>
+                        <ul className="list-of-added-recipes">
                         {this.state.newMeal.recipes.map(recipe => {
-                            return <li key={recipe.id} >{recipe.name}<span>[X]</span></li>
+                            return <li className="added-recipe-li" key={recipe.id} >{recipe.name}<span>[X]</span></li>
                         })
                         }
                     </ul>
-                    <button onClick={() => {this.props.setMeal(this.state.newMeal) }}>Cook</button>
+                    <button className="cook-button" onClick={() => {this.props.setMeal(this.state.newMeal) }}>Cook</button>
                 </div>
             </section>
         )

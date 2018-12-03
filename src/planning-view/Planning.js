@@ -55,26 +55,26 @@ export class Planning extends React.Component {
         }
         if(this.state.view === 'premade'){
             return(
-                <section>
+                <section className="planning-section">
                     Premade Meals:
-                    <ul>
+                    <ul className="meals-ul">
                         {arrayOfMeals.map(meal => {
-                            return <li key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
+                            return <li className="meal-li" key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
                         })}
-                        <li> Create Your Own <input id="mealName" type="text"></input><button onClick={ () => {
-                            this.setState({
-                                mealName : document.querySelector('#mealName').value
-                            })
-                            this.fetchRecipes()
-                        }}>Start</button></li>
                     </ul>
+                    <section className="create-a-meal-section"> Create Your Own <input className="new-meal-name-field" id="mealName" type="text"></input><button className="new-meal-button" onClick={ () => {
+                        this.setState({
+                            mealName : document.querySelector('#mealName').value
+                        })
+                        this.fetchRecipes()
+                    }}>Start</button></section>
                 </section>
             )
         }
         if(this.state.view === 'build'){
             
             return(
-                <Build arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal}/>
+                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal}/>
             )
         }
     }
