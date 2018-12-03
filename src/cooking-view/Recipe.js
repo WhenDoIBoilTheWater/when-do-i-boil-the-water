@@ -82,7 +82,7 @@ export class Recipe extends React.Component {
 
     	return (
     		<section className="recipe">
-	    		<h4>{this.state.globalSeconds}</h4>
+	    		<h4 className="recipe-time-seconds">{this.state.globalSeconds}</h4>
 	    		<h1>{this.state.recipe.name}</h1>
 	    		<div className="steps-container">
 		    		{currentStep}

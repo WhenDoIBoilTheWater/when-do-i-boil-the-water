@@ -5,6 +5,14 @@
 	--light-grey: #eee;
     --med-grey: #dddddd;
     --color-1: blue;
+    --border-radius: 3px;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
 }
 
 section {
