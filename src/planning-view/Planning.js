@@ -41,6 +41,10 @@ export class Planning extends React.Component {
         }))
     }
 
+    setView = (newView) => {
+        this.setState({view : newView})
+    }
+
     render(){
         let arrayOfMeals = []
         let arrayOfRecipes = []
@@ -75,7 +79,7 @@ export class Planning extends React.Component {
         if(this.state.view === 'build'){
             
             return(
-                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal}/>
+                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
             )
         }
     }
