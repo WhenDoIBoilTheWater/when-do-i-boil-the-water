@@ -5,14 +5,24 @@
 	--light-grey: #eee;
     --med-grey: #dddddd;
     --color-1: blue;
-    --border-radius: 3px;
+    --border-radius: 4px;
+
+    --dark-green: #44813E;
+    --light-green: #92C24C;
+    --cream: #FFFADD;
+    --tan: #FFEFA9;
+    --yellow: #FCD949;
+
+    --app-name: 'Reciplanner';
+
 }
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-
+	text-decoration: none;
+	list-style: none;
 }
 
 section {
