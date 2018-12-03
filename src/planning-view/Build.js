@@ -1,4 +1,5 @@
 import React from 'react'
+import './css/build.css'
 
 class Build extends React.Component {
 
