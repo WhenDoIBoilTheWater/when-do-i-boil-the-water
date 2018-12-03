@@ -25,9 +25,23 @@ class Build extends React.Component {
 
     }
 
+    fetchRemoveRecipe(){
+        fetch(`http://localhost:8080/api/meals/removeRecipe`, {
+            method: "POST",
+            body : JSON.stringify({
+                mealId : this.props.newMeal.id
+            })
+        })
+    }
     render() {
         return (
             <section className="build-meal-section">
+                <span style={{cursor : 'pointer'}} onClick={() => {
+                    this.fetchRemoveRecipe();
+                    this.props.setView('premade')
+                }}>
+                    &larr;
+                </span>
                 <h2>Which recipes would you like to cook?:</h2>
                     <ul className="list-of-recipes">
                     {this.props.arrayOfRecipes.map(recipe => {
