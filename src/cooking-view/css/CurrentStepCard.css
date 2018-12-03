@@ -1,4 +1,5 @@
 .current-step-card {
 	background-color: var(--light-grey);
 	border: 1px solid var(--med-grey);
+	min-width: 30vw;
 }

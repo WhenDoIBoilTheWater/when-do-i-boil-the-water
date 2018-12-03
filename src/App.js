@@ -32,7 +32,7 @@ export class App extends React.Component {
 
         if (this.state.view === 'cooking') {
             return (
-                <section>
+                <section className="recipe-container">
                     {this.state.meal.recipes.map(recipe =>{
                         return <Recipe recipe={recipe} meal={this.state.meal} />
                     })}

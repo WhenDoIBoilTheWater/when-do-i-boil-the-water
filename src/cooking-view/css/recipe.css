@@ -1,0 +1,17 @@
+.list-of-steps {
+	display: flex;
+	flex-direction: row;
+}
+
+.recipe {
+	display: block;
+}
+
+.recipe-container {
+	display: block;
+}
+
+.steps-container {
+	display: flex;
+	flex-direction: row;
+}
