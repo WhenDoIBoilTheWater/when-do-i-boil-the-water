@@ -1,6 +1,16 @@
 .current-step-card {
 	background-color: var(--light-grey);
-	border: 1px solid var(--med-grey);
 	border-radius: var(--border-radius);
-	min-width: 30vw;
+	color: var(--dark-grey);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	max-width: 350px;
+	min-width: 150px;
+
 }
+	.current-step-card h1 {
+		margin-bottom: .5rem;
+		padding: 1rem;
+	}

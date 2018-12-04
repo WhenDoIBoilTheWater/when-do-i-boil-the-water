@@ -20,6 +20,13 @@
 	min-height: 20vh;
 }
 
+.recipe-name {
+	background-color: var(--light-green);
+	color: white;
+	padding: .5rem 0;
+	margin-bottom: .5rem;
+}
+
 .recipe-time-seconds {
 	display: none;
 }
