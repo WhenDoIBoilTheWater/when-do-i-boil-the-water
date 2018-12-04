@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Rubik');
 
 :root {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	--light-grey: #eee;
     --med-grey: #dddddd;
-    --color-1: blue;
+    --dark-grey: #5d5d5d;
     --border-radius: 4px;
 
     --dark-green: #44813E;
     --light-green: #92C24C;
     --cream: #FFFADD;
-    --tan: #FFEFA9;
+    --brown: #916A2A;
     --yellow: #FCD949;
 
     --app-name: 'Reciplanner';
@@ -19,6 +19,7 @@
 
 * {
 	box-sizing: border-box;
+	color: var(--dark-grey);
 	margin: 0;
 	padding: 0;
 	text-decoration: none;

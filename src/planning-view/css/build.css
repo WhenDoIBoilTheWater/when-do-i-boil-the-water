@@ -1,16 +1,89 @@
+.added-recipe-li {
+	background-color: white;
+	border-radius: var(--border-radius);
+	color: var(--dark-green);
+	display: flex;
+	justify-content: space-between;
+	padding: .5rem;
+	margin: .5rem 0;
+	width: 100%;
+}
+
+
 .build-meal-section {
 	display: block;
 }
 
-.new-meal-summary {
-	background-color: var(--light-grey);
+.cook-button {
+	background: none;
+	background-color: white;
+	border: none;
+	border-radius: var(--border-radius);
+	color: var(--dark-green);
+	cursor: pointer;
+	display: block;
+	font: inherit;
+	margin: 0 auto;
+	outline: inherit;
+	padding: 1rem;
+	width: 50vw;
 }
+	.cook-button:hover {
+		background-color: rgba(0,0,0,.1)
+	}
+
+.new-meal-summary {
+	background-color: var(--light-green);
+
+	padding: 1rem;
+}
+	.new-meal-summary h3 {
+		border-bottom: 3px solid var(--dark-green);
+		color: white;
+		margin-bottom: 1rem;
+	}
 
 .recipe-li {
 	border: 1px solid var(--light-grey);
 	border-radius: var(--border-radius);
-	margin: 1rem 0;
+	margin: .5rem 0;
+	padding: .5rem;
+	width: 100%;
 }
 	.recipe-li:hover{
-		background-color: rgba(0,0,0,.2)
+		background-color: rgba(0,0,0,.1)
+	}
+
+.recipe-remove-button {
+	cursor: pointer;
+}
+
+.list-of-recipes {
+	width: 95vw;
+	margin: 0 auto 2rem;
+}
+
+.top-bar {
+	background-color: var(--light-green);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: .25rem;
+	width: 100vw;
+
+}
+	.top-bar .back-button {
+		background-color: white;
+		border-radius: var(--border-radius);
+		color: var(--light-green);
+		min-width: 2rem;
+		text-align: center;
+		font-style: bold;
+		font-size: 1.5rem;
+
+		transform: scaleX(-1);
+	}
+	.top-bar h2 {
+		background-color: var(--light-green);
+		color: white;
 	}

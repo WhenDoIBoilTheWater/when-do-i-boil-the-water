@@ -31,13 +31,14 @@ export class App extends React.Component {
     }
     render() {
 
+        let spotifyActive = false;
+
         if (this.state.view === 'cooking') {
             return (
                 <section className="recipe-container">
                     {this.state.meal.recipes.map(recipe =>{
                         return <Recipe recipe={recipe} meal={this.state.meal} />
                     })}
-                    <SpotifyWidget />
                 </section>
             )
         }
@@ -45,8 +46,12 @@ export class App extends React.Component {
             return (
                 <section className="planning-view">
                     <Planning setMeal={this.setMeal} />
-                    <SpotifyWidget />
                 </section>
+            )
+        }
+        if (this.state.view === 'spotify'){
+            return(
+                <SpotifyWidget />
             )
         }
     }

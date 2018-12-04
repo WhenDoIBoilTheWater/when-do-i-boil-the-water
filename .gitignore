@@ -38,13 +38,13 @@ local.properties
 .factorypath
 /src/main/resources/rebel.xml
 # External tool builders
-.externalToolBuilders/**
+backend/.externalToolBuilders/**
 # Locally stored "Eclipse launch configurations"
-*.launch
+backend/*.launch
 # CDT-specific
-.cproject
+backend/.cproject
 # PDT-specific
-.buildpath
+backend/.buildpath
 
 ######################
 # Intellij
@@ -72,8 +72,8 @@ out/
 ######################
 # Gradle
 ######################
-.gradle/
-/build/
+backend/.gradle/
+backend/build/
 
 ######################
 # Package Files
@@ -105,8 +105,8 @@ Desktop.ini
 ######################
 # Directories
 ######################
-/bin/
-/deploy/
+backend/bin/
+backend/deploy/
 
 ######################
 # Logs
@@ -116,15 +116,15 @@ Desktop.ini
 ######################
 # Others
 ######################
-*.class
-*.*~
-*~
-.merge_file*
+backend/*.class
+backend/*.*~
+backend/*~
+backend/.merge_file*
 
 ######################
 # Gradle Wrapper
 ######################
-!gradle/wrapper/gradle-wrapper.jar
+!backend/gradle/wrapper/gradle-wrapper.jar
 
 ######################
 # Maven Wrapper
