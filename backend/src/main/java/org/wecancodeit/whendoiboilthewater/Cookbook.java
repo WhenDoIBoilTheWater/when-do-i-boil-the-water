@@ -35,6 +35,18 @@ public class Cookbook {
 		return ingredientRepo.save(new Ingredient(ingredientName));
 	}
 
+	protected Recipe addNewRecipe(String recipeName, int servingSize, String recipeDescription) {
+		return recipeRepo.save(new Recipe(recipeName, servingSize, recipeDescription));
+	}
+
+	protected Meal addNewMeal() {
+		return mealRepo.save(new Meal());
+	}
+
+	protected Meal addNewMeal(String mealName) {
+		return mealRepo.save(new Meal(mealName));
+	}
+
 	protected void addIngredientsToRecipe(Recipe recipe, Ingredient... ingredientsToAdd) {
 		for (int i = 0; i < ingredientsToAdd.length; i++) {
 			addRecipeIngredient(ingredientsToAdd[i], recipe);

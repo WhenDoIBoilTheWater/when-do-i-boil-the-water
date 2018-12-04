@@ -1,17 +1,11 @@
 package org.wecancodeit.whendoiboilthewater;
 
-import javax.annotation.Resource;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.whendoiboilthewater.model.Ingredient;
 import org.wecancodeit.whendoiboilthewater.model.Meal;
 import org.wecancodeit.whendoiboilthewater.model.Recipe;
 import org.wecancodeit.whendoiboilthewater.model.Step;
-import org.wecancodeit.whendoiboilthewater.repository.IngredientRepository;
-import org.wecancodeit.whendoiboilthewater.repository.MealRepository;
-import org.wecancodeit.whendoiboilthewater.repository.RecipeRepository;
-import org.wecancodeit.whendoiboilthewater.repository.StepRepository;
 
 @Service
 public class Populator extends Cookbook implements CommandLineRunner {
@@ -59,16 +53,15 @@ public class Populator extends Cookbook implements CommandLineRunner {
 		Step step20 = addNewStep(27L, "set aside hot dog milk tea");
 		Step step21 = addNewStep(7L, "add tapioca balls to hot dog milk tea");
 
-		Recipe recipe1 = recipeRepo.save(new Recipe("Hot Pop Rock Dog Stew", 12,
-				"A frothy, exciting treat for a cold summer night. 1 cup Pop Rocks, 4 Hot Dogs, 2 cup Farfalle"));
-		Recipe recipe2 = recipeRepo.save(new Recipe("Single Fried Cheeto", 4, "A delicacy."));
-		Recipe recipe3 = recipeRepo
-				.save(new Recipe("Quick 10-Bean Salad", 10, "Ten High Quality Beans for Ten High Quality Folks"));
-		Recipe recipe4 = recipeRepo.save(new Recipe("Hot Dog Milk Tea Boba", 10,
-				"Fancy bubble tea featuring your favorite of conglomerated meat products, the Hot Dog!"));
+		Recipe recipe1 = addNewRecipe("Hot Pop Rock Dog Stew", 12,
+				"A frothy, exciting treat for a cold summer night. 1 cup Pop Rocks, 4 Hot Dogs, 2 cup Farfalle");
+		Recipe recipe2 = addNewRecipe("Single Fried Cheeto", 4, "A delicacy.");
+		Recipe recipe3 = addNewRecipe("Quick 10-Bean Salad", 10, "Ten High Quality Beans for Ten High Quality Folks");
+		Recipe recipe4 = addNewRecipe("Hot Dog Milk Tea Boba", 10,
+				"Fancy bubble tea featuring your favorite of conglomerated meat products, the Hot Dog!");
 
-		Meal meal1 = new Meal("Hot Poppin Cheeto Rockin");
-		Meal meal2 = new Meal("Quick Beans n Tea");
+		Meal meal1 = addNewMeal("Hot Poppin Cheeto Rockin");
+		Meal meal2 = addNewMeal("Quick Beans n Tea");
 
 		addStepsToRecipe(recipe1, step1, step2, step3);
 		addStepsToRecipe(recipe2, cheetoStep1);
