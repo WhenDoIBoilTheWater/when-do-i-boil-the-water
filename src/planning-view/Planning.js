@@ -41,10 +41,6 @@ export class Planning extends React.Component {
         }))
     }
 
-    setView = (newView) => {
-        this.setState({view : newView})
-    }
-
     render(){
         let arrayOfMeals = []
         let arrayOfRecipes = []
@@ -61,34 +57,25 @@ export class Planning extends React.Component {
         if(this.state.view === 'premade'){
             return(
                 <section className="planning-section">
-                    <section className="create-a-meal-section">
-                        <h2>New Meal:</h2>
-                        <div className="new-meal-input-area">
-                            <input className="new-meal-name-field" id="mealName" type="text"></input>
-                            <button className="new-meal-button" onClick={ () => {
-                                this.setState({
-                                    mealName : document.querySelector('#mealName').value
-                                })
-                                this.fetchRecipes()
-                                }}>Start
-                            </button>
-                        </div>
-                    </section>
-                    <section className="saved-meals-section">
-                        <h2>Saved Meals:</h2>
-                        <ul className="meals-ul">
-                            {arrayOfMeals.map(meal => {
-                                return <li className="meal-li" key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
-                            })}
-                        </ul>
-                    </section>
+                    Premade Meals:
+                    <ul className="meals-ul">
+                        {arrayOfMeals.map(meal => {
+                            return <li className="meal-li" key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
+                        })}
+                    </ul>
+                    <section className="create-a-meal-section"> Create Your Own <input className="new-meal-name-field" id="mealName" type="text"></input><button className="new-meal-button" onClick={ () => {
+                        this.setState({
+                            mealName : document.querySelector('#mealName').value
+                        })
+                        this.fetchRecipes()
+                    }}>Start</button></section>
                 </section>
             )
         }
         if(this.state.view === 'build'){
             
             return(
-                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
+                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal}/>
             )
         }
     }

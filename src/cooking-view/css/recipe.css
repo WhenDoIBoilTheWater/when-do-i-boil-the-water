@@ -1,25 +1,17 @@
 .list-of-steps {
 	display: flex;
 	flex-direction: row;
-	min-height: 20vh;
 }
 
 .recipe {
 	display: block;
-	margin: 1rem 0;
 }
 
 .recipe-container {
 	display: block;
-	position: relative;
 }
 
 .steps-container {
 	display: flex;
 	flex-direction: row;
-	min-height: 20vh;
-}
-
-.recipe-time-seconds {
-	display: none;
 }

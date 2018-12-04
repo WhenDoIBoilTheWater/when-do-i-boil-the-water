@@ -17,8 +17,7 @@ export class TimerCard extends React.Component {
 	}
 
     setEndOClock() {
-        let timeObject = new Date(); 
-        timeObject = new Date(timeObject.getTime() + 1000*this.state.when);
+        let timeObject = new Date(Date.now() + 1000*this.state.when); 
         let d = (timeObject.toLocaleTimeString());
         this.setState({whenOClock: d})
     }
