@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/build.css'
 
-class Build extends React.Component {
+class BuildMeal extends React.Component {
 
     constructor(props){
         super(props)
@@ -69,4 +69,4 @@ class Build extends React.Component {
     }
 }
 
-export default Build
+export default BuildMeal

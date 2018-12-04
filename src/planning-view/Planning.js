@@ -1,5 +1,5 @@
 import React from 'react'
-import Build from './Build.js'
+import BuildMeal from './BuildMeal.js'
 import './css/planning.css'
 
 export class Planning extends React.Component {
@@ -25,14 +25,13 @@ export class Planning extends React.Component {
             this.setState({
                 arrayOfRecipes: data
             })
-            this.fetchAddMeal(this.state.mealName)
+            this.fetchAddMeal()
         })
     }
 
-    fetchAddMeal(mealName){
+    fetchAddMeal(){
         fetch(`http://localhost:8080/api/meals/add`, {
-            method : "POST",
-            body : JSON.stringify({name : this.state.mealName})
+            method : "POST"
         })
         .then(res => res.json())
         .then(data => this.setState({
@@ -61,19 +60,6 @@ export class Planning extends React.Component {
         if(this.state.view === 'premade'){
             return(
                 <section className="planning-section">
-                    <section className="create-a-meal-section">
-                        <h2>New Meal:</h2>
-                        <div className="new-meal-input-area">
-                            <input className="new-meal-name-field" id="mealName" type="text"></input>
-                            <button className="new-meal-button" onClick={ () => {
-                                this.setState({
-                                    mealName : document.querySelector('#mealName').value
-                                })
-                                this.fetchRecipes()
-                                }}>Start
-                            </button>
-                        </div>
-                    </section>
                     <section className="saved-meals-section">
                         <h2>Saved Meals:</h2>
                         <ul className="meals-ul">
@@ -82,13 +68,22 @@ export class Planning extends React.Component {
                             })}
                         </ul>
                     </section>
+                    <section className="create-a-meal-section">
+                        <h2>New Meal:</h2>
+                        <div className="new-meal-input-area">
+                            <button className="new-meal-button" onClick={ () => {
+                                this.fetchRecipes()
+                                }}>+
+                            </button>
+                        </div>
+                    </section>
                 </section>
             )
         }
         if(this.state.view === 'build'){
             
             return(
-                <Build className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
+                <BuildMeal className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
             )
         }
     }
