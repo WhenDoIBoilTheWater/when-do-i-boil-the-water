@@ -89,7 +89,7 @@ export class Recipe extends React.Component {
 		    		<ul className="list-of-steps">
 			    		{this.state.arrayOfTimers.map(timer => {
 			    			return(
-			    				(<TimerCard key={timer.description} when={timer.when} description={timer.description} />)
+			    				(<TimerCard key={timer.when} when={timer.when} description={timer.description} />)
 			    				)
 			    		})}
 		    		</ul>

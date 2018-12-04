@@ -18,7 +18,7 @@ class spotifyWidget extends React.Component {
 
         return(
             <div className="spotify-widget">
-            <iframe src="https://open.spotify.com/embed/playlist/5GQIv1pWFtbYxC6T6bHz83" width="640" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/5GQIv1pWFtbYxC6T6bHz83" width="640" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" title="spotify-widget"></iframe>
 
             </div>
         )
