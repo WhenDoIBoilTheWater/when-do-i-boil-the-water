@@ -14,16 +14,7 @@ import org.wecancodeit.whendoiboilthewater.repository.RecipeRepository;
 import org.wecancodeit.whendoiboilthewater.repository.StepRepository;
 
 @Service
-public class Populator implements CommandLineRunner {
-
-	@Resource
-	IngredientRepository ingredientRepo;
-	@Resource
-	MealRepository mealRepo;
-	@Resource
-	RecipeRepository recipeRepo;
-	@Resource
-	StepRepository stepRepo;
+public class Populator extends Cookbook implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -96,48 +87,4 @@ public class Populator implements CommandLineRunner {
 
 	}
 
-	private Step addNewStep(Long stepLength, String stepDescription) {
-		return stepRepo.save(new Step(stepLength, stepDescription));
-	}
-
-	private Ingredient addNewIngredient(String ingredientName) {
-		return ingredientRepo.save(new Ingredient(ingredientName));
-	}
-
-	private void addIngredientsToRecipe(Recipe recipe, Ingredient... ingredientsToAdd) {
-		for (int i = 0; i < ingredientsToAdd.length; i++) {
-			addRecipeIngredient(ingredientsToAdd[i], recipe);
-		}
-	}
-
-	private void addStepsToRecipe(Recipe recipe, Step... stepsToAdd) {
-		for (int i = 0; i < stepsToAdd.length; i++) {
-			addRecipeStep(stepsToAdd[i], recipe);
-		}
-	}
-
-	private void addRecipesToMeal(Meal meal, Recipe... recipesToAdd) {
-		for (int i = 0; i < recipesToAdd.length; i++) {
-			addMealRecipe(recipesToAdd[i], meal);
-		}
-	}
-
-	private void addMealRecipe(Recipe recipeToAdd, Meal mealToAddRecipeTo) {
-		mealToAddRecipeTo.addRecipe(recipeToAdd);
-		mealRepo.save(mealToAddRecipeTo);
-	}
-
-	private void addRecipeIngredient(Ingredient ingredientToAdd, Recipe recipeToAddIngredientTo) {
-		recipeToAddIngredientTo.addIngredient(ingredientToAdd);
-		ingredientToAdd.addRecipe(recipeToAddIngredientTo);
-		recipeRepo.save(recipeToAddIngredientTo);
-		ingredientRepo.save(ingredientToAdd);
-	}
-
-	private void addRecipeStep(Step stepToAdd, Recipe recipeToAddStepTo) {
-		recipeToAddStepTo.addStep(stepToAdd);
-		stepToAdd.addRecipe(recipeToAddStepTo);
-		recipeRepo.save(recipeToAddStepTo);
-		stepRepo.save(stepToAdd);
-	}
 }
