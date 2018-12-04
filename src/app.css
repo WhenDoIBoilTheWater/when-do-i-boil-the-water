@@ -26,6 +26,21 @@
 	list-style: none;
 }
 
+button {
+	background: none;
+	background-color: inherit;
+	border: 1px solid var(--med-grey);
+	border-radius: var(--border-radius);
+	color: var(--dark-grey);
+	cursor: pointer;
+	font: inherit;
+	margin: 0 auto;
+	outline: inherit;
+}
+	button:hover {
+		background-color: rgba(0,0,0,.2)
+	}
+
 section {
 	display: flex;
 	flex-direction: row;
