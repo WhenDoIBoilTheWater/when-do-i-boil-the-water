@@ -45,3 +45,13 @@ section {
 	display: flex;
 	flex-direction: row;
 }
+
+.recipe-container {
+	height: 100vh;
+	background-image: url("./images/swish-bars.png");
+}
+
+.planning-view {
+	height: 100vh;
+	background-image: url("./images/swish-bars.png");
+}

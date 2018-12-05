@@ -43,6 +43,7 @@
 
 .planning-section {
 	align-items: center;
+	background-image: url("../../images/swish-bars.png");
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
