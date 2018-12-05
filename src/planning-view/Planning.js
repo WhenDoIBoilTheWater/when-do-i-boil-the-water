@@ -69,14 +69,12 @@ export class Planning extends React.Component {
                         </ul>
                     </section>
                     <section className="create-a-meal-section">
-                        <h2>New Meal
-                            <span className="new-meal-input-area">
+                            <div className="new-meal-input-area">
                                 <button className="new-meal-button" onClick={ () => {
                                     this.fetchRecipes()
-                                    }}>+
+                                    }}><p>New Meal</p>
                                 </button>
-                            </span>
-                        </h2>
+                            </div>
                     </section>
                 </section>
             )
