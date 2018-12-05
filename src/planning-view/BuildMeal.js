@@ -7,6 +7,7 @@ class BuildMeal extends React.Component {
         super(props)
 
         this.state = {
+            arrayOfRecipes : this.props.arrayOfRecipes,
             newMeal : this.props.passedMeal
         }
         
@@ -30,6 +31,16 @@ class BuildMeal extends React.Component {
             })
         })
     }
+
+    fetchRemoveRecipe(recipeToRemove){
+        fetch(`http://localhost:8080/api/recipes/remove`, {
+            method: "POST",
+            body : JSON.stringify({
+                recipeId : recipeToRemove
+            })
+        }).then(res => res.json()).then(data => {this.setState({arrayOfRecipes : data})})
+    }
+
     componentDidMount() {
         document.querySelector('.meal-name').value = (this.state.newMeal.name)
     }
@@ -46,7 +57,7 @@ class BuildMeal extends React.Component {
                     <h2>Which would you like to cook?</h2>
                 </div>
                 <ul className="list-of-recipes">
-                    {this.props.arrayOfRecipes.map(recipe => {
+                    {this.state.arrayOfRecipes.map(recipe => {
                         return <li className="recipe-li" key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
                     })}
                 </ul>
@@ -57,7 +68,9 @@ class BuildMeal extends React.Component {
                         {this.state.newMeal.recipes.map(recipe => {
                             return <li className="added-recipe-li" key={recipe.id}>
                                 <p>{recipe.name}</p>
-                                <span className="recipe-remove-button"> &times; </span>
+                                <span className="recipe-remove-button" onClick={() => {
+                                    this.fetchRemoveRecipe(recipe.id);
+                                }}> &times; </span>
                             </li>
                         })
                         }
