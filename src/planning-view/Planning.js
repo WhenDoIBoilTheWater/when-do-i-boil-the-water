@@ -31,7 +31,10 @@ export class Planning extends React.Component {
 
     fetchAddMeal(){
         fetch(`http://localhost:8080/api/meals/add`, {
-            method : "POST"
+            method : "POST",
+            body : JSON.stringify({
+                mealName : 'New Meal'
+            })
         })
         .then(res => res.json())
         .then(data => this.setState({
@@ -82,7 +85,7 @@ export class Planning extends React.Component {
         if(this.state.view === 'build'){
             
             return(
-                <BuildMeal className="build-view" arrayOfRecipes={arrayOfRecipes} newMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
+                <BuildMeal className="build-view" arrayOfRecipes={arrayOfRecipes} passedMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
             )
         }
     }
