@@ -7,11 +7,7 @@ class BuildMeal extends React.Component {
         super(props)
 
         this.state = {
-            newMeal : {
-                name : this.props.newMeal.name,
-                length : '0',
-                recipes : []
-            }
+            newMeal : this.props.passedMeal
         }
         
     }
@@ -19,7 +15,7 @@ class BuildMeal extends React.Component {
         fetch(`http://localhost:8080/api/meals/addRecipe`, {
             method: "POST",
             body : JSON.stringify({
-                mealId : this.props.newMeal.id,
+                mealId : this.state.newMeal.id,
                 recipeId : recipeToAdd
             })
         }).then(res => res.json()).then(data => this.setState({newMeal : data}))
