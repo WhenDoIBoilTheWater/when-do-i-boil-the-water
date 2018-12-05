@@ -29,16 +29,27 @@ class BuildMeal extends React.Component {
             body : JSON.stringify({
                 mealId : this.state.newMeal.id
             })
-        })
+        }).then(() => {this.props.setView('premade')})
     }
 
     fetchRemoveRecipe(recipeToRemove){
         fetch(`http://localhost:8080/api/recipes/remove`, {
             method: "POST",
             body : JSON.stringify({
-                recipeId : recipeToRemove
+                recipeId : recipeToRemove,
+                mealId : this.state.newMeal.id
             })
-        }).then(res => res.json()).then(data => {this.setState({arrayOfRecipes : data})})
+        }).then(res => res.json()).then(data => {this.setState({newMeal : data})})
+    }
+
+    fetchUpdateMealName(name){
+        fetch(`http://localhost:8080/api/meals/updateName`, {
+            method : "POST",
+            body : JSON.stringify({
+                mealId : this.state.newMeal.id,
+                mealName : name
+            })
+        }).then(() => {this.props.setView('premade')})
     }
 
     componentDidMount() {
@@ -50,7 +61,7 @@ class BuildMeal extends React.Component {
                 <div className="top-bar">
                     <span className="back-button" style={{cursor : 'pointer'}} onClick={() => {
                         this.fetchRemoveMeal();
-                        this.props.setView('premade')
+                        
                     }}>
                         ➦
                     </span>
@@ -58,7 +69,9 @@ class BuildMeal extends React.Component {
                 </div>
                 <ul className="list-of-recipes">
                     {this.state.arrayOfRecipes.map(recipe => {
-                        return <li className="recipe-li" key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
+                        return <li className="recipe-li" key={recipe.id} onClick={() => {
+                             this.fetchAddRecipeToMeal(recipe.id) 
+                            }}>{recipe.name}</li>
                     })}
                 </ul>
 
@@ -75,7 +88,17 @@ class BuildMeal extends React.Component {
                         })
                         }
                     </ul>
-                    <button className="cook-button" onClick={() => {this.props.setMeal(this.state.newMeal) }}>Cook</button>
+                    <section className="button-section">
+                        <button className="cook-button" onClick={() => {
+                            this.props.setMeal(this.state.newMeal) 
+                            this.fetchUpdateMealName(document.querySelector('.meal-name').value);
+                            }}>Cook</button>
+
+                        <button className="save-button" onClick={() => {
+                            this.fetchUpdateMealName(document.querySelector('.meal-name').value);
+                            
+                            }}>Save</button>
+                    </section>
                 </div>
             </section>
         )

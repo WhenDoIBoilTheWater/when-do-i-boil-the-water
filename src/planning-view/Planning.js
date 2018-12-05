@@ -59,7 +59,12 @@ export class Planning extends React.Component {
     }
 
     setView = (newView) => {
-        this.setState({view : newView})
+        fetch(`http://localhost:8080/api/meals`).then(res => res.json()).then(data => {
+            this.setState({
+                view : newView,
+                arrayOfMeals: data,
+            })
+        })        
     }
 
     render(){
@@ -83,7 +88,7 @@ export class Planning extends React.Component {
                         <ul className="meals-ul">
                             {arrayOfMeals.map(meal => {
                                 return <li className="meal-li" key={meal.id}>
-                                            <span onClick={() => {
+                                            <span className="meal-li-name" onClick={() => {
                                                 this.props.setMeal(meal)
                                             }}>
                                                 {meal.name}
