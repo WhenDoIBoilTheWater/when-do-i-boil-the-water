@@ -72,7 +72,7 @@ export class Planning extends React.Component {
                             <div className="new-meal-input-area">
                                 <button className="new-meal-button" onClick={ () => {
                                     this.fetchRecipes()
-                                    }}><p>New Meal</p>
+                                    }}><p>+ New Meal</p>
                                 </button>
                             </div>
                     </section>
