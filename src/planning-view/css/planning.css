@@ -10,6 +10,8 @@
 	border: 1px solid var(--light-grey);
 	border-radius: var(--border-radius);
 	margin: .5rem 0;
+	display: flex;
+	justify-content: space-between;
 	min-height: 2rem;
 	padding: .25rem;
 }
@@ -17,6 +19,11 @@
 		background-color: rgba(0,0,0,.2)
 	}
 
+.meal-li-name {
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+}
 .meals-ul {
 	display: block;
 	margin: 0 auto;
@@ -56,7 +63,6 @@
 .saved-meals-section {
 	border-radius: var(--border-radius);
 	display: block;
-	padding: 1rem;
 }
 	.saved-meals-section h2 {
 		background-color: var(--light-green);

@@ -7,6 +7,7 @@ class BuildMeal extends React.Component {
         super(props)
 
         this.state = {
+            arrayOfRecipes : this.props.arrayOfRecipes,
             newMeal : this.props.passedMeal
         }
         
@@ -22,14 +23,35 @@ class BuildMeal extends React.Component {
 
     }
 
-    fetchRemoveRecipe(){
-        fetch(`http://localhost:8080/api/meals/removeRecipe`, {
+    fetchRemoveMeal(){
+        fetch(`http://localhost:8080/api/meals/remove`, {
             method: "POST",
             body : JSON.stringify({
-                mealId : this.props.newMeal.id
+                mealId : this.state.newMeal.id
             })
-        })
+        }).then(() => {this.props.setView('premade')})
     }
+
+    fetchRemoveRecipe(recipeToRemove){
+        fetch(`http://localhost:8080/api/recipes/remove`, {
+            method: "POST",
+            body : JSON.stringify({
+                recipeId : recipeToRemove,
+                mealId : this.state.newMeal.id
+            })
+        }).then(res => res.json()).then(data => {this.setState({newMeal : data})})
+    }
+
+    fetchUpdateMealName(name){
+        fetch(`http://localhost:8080/api/meals/updateName`, {
+            method : "POST",
+            body : JSON.stringify({
+                mealId : this.state.newMeal.id,
+                mealName : name
+            })
+        }).then(() => {this.props.setView('premade')})
+    }
+
     componentDidMount() {
         document.querySelector('.meal-name').value = (this.state.newMeal.name)
     }
@@ -38,16 +60,18 @@ class BuildMeal extends React.Component {
             <section className="build-meal-section">
                 <div className="top-bar">
                     <span className="back-button" style={{cursor : 'pointer'}} onClick={() => {
-                        this.fetchRemoveRecipe();
-                        this.props.setView('premade')
+                        this.fetchRemoveMeal();
+                        
                     }}>
                         ➦
                     </span>
                     <h2>Which would you like to cook?</h2>
                 </div>
                 <ul className="list-of-recipes">
-                    {this.props.arrayOfRecipes.map(recipe => {
-                        return <li className="recipe-li" key={recipe.id} onClick={() => { this.fetchAddRecipeToMeal(recipe.id) }}>{recipe.name}</li>
+                    {this.state.arrayOfRecipes.map(recipe => {
+                        return <li className="recipe-li" key={recipe.id} onClick={() => {
+                             this.fetchAddRecipeToMeal(recipe.id) 
+                            }}>{recipe.name}</li>
                     })}
                 </ul>
 
@@ -57,12 +81,24 @@ class BuildMeal extends React.Component {
                         {this.state.newMeal.recipes.map(recipe => {
                             return <li className="added-recipe-li" key={recipe.id}>
                                 <p>{recipe.name}</p>
-                                <span className="recipe-remove-button"> &times; </span>
+                                <span className="recipe-remove-button" onClick={() => {
+                                    this.fetchRemoveRecipe(recipe.id);
+                                }}> &times; </span>
                             </li>
                         })
                         }
                     </ul>
-                    <button className="cook-button" onClick={() => {this.props.setMeal(this.state.newMeal) }}>Cook</button>
+                    <section className="button-section">
+                        <button className="cook-button" onClick={() => {
+                            this.props.setMeal(this.state.newMeal) 
+                            this.fetchUpdateMealName(document.querySelector('.meal-name').value);
+                            }}>Cook</button>
+
+                        <button className="save-button" onClick={() => {
+                            this.fetchUpdateMealName(document.querySelector('.meal-name').value);
+                            
+                            }}>Save</button>
+                    </section>
                 </div>
             </section>
         )

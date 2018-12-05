@@ -14,6 +14,11 @@
 	display: block;
 }
 
+.button-section {
+	display: flex;
+	justify-content: space-around;
+}
+
 .cook-button {
 	background: none;
 	background-color: white;
@@ -25,8 +30,7 @@
 	font: inherit;
 	margin: 0 auto;
 	outline: inherit;
-	padding: 1rem;
-	width: 50vw;
+	padding: 1rem 4rem;
 }
 	.cook-button:hover {
 		background-color: rgba(0,0,0,.1)
@@ -56,6 +60,13 @@
 
 .recipe-remove-button {
 	cursor: pointer;
+	color: white;
+	text-align: center;
+	background-color: var(--light-green);
+	border-radius: 50%;
+	margin-left: .5rem;
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
 .list-of-recipes {
