@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/build.css'
 
-class Build extends React.Component {
+class BuildMeal extends React.Component {
 
     constructor(props){
         super(props)
@@ -13,6 +13,7 @@ class Build extends React.Component {
                 recipes : []
             }
         }
+        
     }
     fetchAddRecipeToMeal(recipeToAdd){
         fetch(`http://localhost:8080/api/meals/addRecipe`, {
@@ -33,6 +34,9 @@ class Build extends React.Component {
             })
         })
     }
+    componentDidMount() {
+        document.querySelector('.meal-name').value = (this.state.newMeal.name)
+    }
     render() {
         return (
             <section className="build-meal-section">
@@ -52,7 +56,7 @@ class Build extends React.Component {
                 </ul>
 
                 <div className="new-meal-summary">
-                    <h3>{this.state.newMeal.name}: {this.state.newMeal.length} seconds</h3>
+                    <h3><input className="meal-name" type="text"></input>: {this.state.newMeal.length} seconds</h3>
                     <ul className="list-of-added-recipes">
                         {this.state.newMeal.recipes.map(recipe => {
                             return <li className="added-recipe-li" key={recipe.id}>
@@ -69,4 +73,4 @@ class Build extends React.Component {
     }
 }
 
-export default Build
+export default BuildMeal
