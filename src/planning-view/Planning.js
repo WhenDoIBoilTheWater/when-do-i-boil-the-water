@@ -12,10 +12,12 @@ export class Planning extends React.Component {
     }
 
     fetchMeals(){
+        console.log("Fetching meals")
         fetch(`http://localhost:8080/api/meals`).then(res => res.json()).then(data => {
             this.setState({
                 arrayOfMeals: data
             })
+            console.log(data.length)
         }
         )
     }
@@ -43,6 +45,19 @@ export class Planning extends React.Component {
         }))
     }
 
+    fetchRemoveMeal(mealToRemove){
+        fetch(`http://localhost:8080/api/meals/remove`, {
+            method: "POST",
+            body : JSON.stringify({
+                mealId : mealToRemove
+            })
+        }).then(res => res.json()).then(data => {
+            this.setState({
+                arrayOfMeals: data
+            })
+        })
+    }
+
     setView = (newView) => {
         this.setState({view : newView})
     }
@@ -67,7 +82,19 @@ export class Planning extends React.Component {
                         <h2>Saved Meals:</h2>
                         <ul className="meals-ul">
                             {arrayOfMeals.map(meal => {
-                                return <li className="meal-li" key={meal.id} onClick={() => {this.props.setMeal(meal)}}>{meal.name}</li>                
+                                return <li className="meal-li" key={meal.id}>
+                                            <span onClick={() => {
+                                                this.props.setMeal(meal)
+                                            }}>
+                                                {meal.name}
+                                            </span> 
+                                            <span className="recipe-remove-button" onClick={
+                                                () => {
+                                                    this.fetchRemoveMeal(meal.id);
+                                            }}>
+                                                &times; 
+                                            </span>
+                                        </li>                
                             })}
                         </ul>
                     </section>

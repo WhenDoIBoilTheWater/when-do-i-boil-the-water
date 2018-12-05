@@ -22,11 +22,11 @@ class BuildMeal extends React.Component {
 
     }
 
-    fetchRemoveRecipe(){
-        fetch(`http://localhost:8080/api/meals/removeRecipe`, {
+    fetchRemoveMeal(){
+        fetch(`http://localhost:8080/api/meals/remove`, {
             method: "POST",
             body : JSON.stringify({
-                mealId : this.props.newMeal.id
+                mealId : this.state.newMeal.id
             })
         })
     }
@@ -38,7 +38,7 @@ class BuildMeal extends React.Component {
             <section className="build-meal-section">
                 <div className="top-bar">
                     <span className="back-button" style={{cursor : 'pointer'}} onClick={() => {
-                        this.fetchRemoveRecipe();
+                        this.fetchRemoveMeal();
                         this.props.setView('premade')
                     }}>
                         ➦
