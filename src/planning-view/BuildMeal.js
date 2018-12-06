@@ -76,7 +76,7 @@ class BuildMeal extends React.Component {
                 </ul>
 
                 <div className="new-meal-summary">
-                    <h3><input className="meal-name" type="text"></input>: {this.state.newMeal.length} seconds</h3>
+                    <h3><input className="meal-name" type="text"></input> : {this.state.newMeal.length} seconds</h3>
                     <ul className="list-of-added-recipes">
                         {this.state.newMeal.recipes.map(recipe => {
                             return <li className="added-recipe-li" key={recipe.id}>
@@ -89,15 +89,15 @@ class BuildMeal extends React.Component {
                         }
                     </ul>
                     <section className="button-section">
-                        <button className="cook-button" onClick={() => {
+                        <button className="cook-button build-meal-button" onClick={() => {
                             this.props.setMeal(this.state.newMeal) 
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             }}>Cook</button>
 
-                        <button className="save-button" onClick={() => {
+                        <button className="save-button build-meal-button" onClick={() => {
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             
-                            }}>Save</button>
+                            }}>Save For Later</button>
                     </section>
                 </div>
             </section>

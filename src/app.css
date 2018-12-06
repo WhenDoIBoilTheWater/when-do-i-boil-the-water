@@ -3,7 +3,7 @@
 :root {
 	font-family: 'Open Sans', sans-serif;
 	--light-grey: #eee;
-    --med-grey: #dddddd;
+    --med-grey: #cdcdcd;
     --dark-grey: #5d5d5d;
     --border-radius: 4px;
 
@@ -14,8 +14,8 @@
     --brown: #916A2A;
     --tertiary-color: #FCD949;*/
 
-    --primary-color: #8ED081; 
-    --secondary-color: #C7AC92; 
+    --primary-color: #C12A4F; 
+    --secondary-color: #F0C021; 
     --tertiary-color: #F0EC57;
     --cream: #FFFADD;
     --brown: #916A2A;
@@ -70,5 +70,5 @@ body {
 	background-image: url("./images/swish-bars-03.png");
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-position: left bottom;
+	background-position: bottom 0 left 0;
 }

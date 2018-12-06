@@ -19,25 +19,28 @@
 	justify-content: space-around;
 }
 
-.cook-button {
+.build-meal-button {
 	background-color: white;
 	border: none;
 	color: var(--secondary-color);
 	display: block;
+	font-weight: bold;
 	margin: 0 auto;
-	padding: 1rem 4rem;
+	padding: 1rem 0;
+	width: 40vw;
 }
-	.cook-button:hover {
+	.build-meal-button:hover {
 		background-color: rgba(0,0,0,.1)
 	}
-.save-button {
+/*.save-button {
 	background-color: white;
 	border: none;
 	color: var(--secondary-color);
 	display: block;
+	font-weight: bold;
 	margin: 0 auto;
 	padding: 1rem 4rem;
-}
+}*/
 
 .new-meal-summary {
 	background-color: var(--primary-color);
