@@ -1,12 +1,6 @@
-.create-a-meal-section {
-	border-radius: var(--border-radius);
-	display: block;
-	margin: 0 0 1rem;
-	padding: 1rem;
-	position: relative;
-}
 
 .meal-li {
+	background-color: white;
 	border: 1px solid var(--light-grey);
 	border-radius: var(--border-radius);
 	margin: .5rem 0;
@@ -30,6 +24,12 @@
 	width: 90vw;
 }
 
+.new-meal-input-area {
+	position: relative;
+	height: 15vh;
+	width: 100vw;
+}
+
 .new-meal-button {
 	background-color: var(--light-green);
 	border: inherit;
@@ -38,8 +38,7 @@
 	height: 15vh;
 	width: 15vh;
 
-	position: fixed;
-	bottom: 1rem;
+	position: absolute;
 	right: 1rem;
 }
 	.new-meal-button p {
@@ -50,7 +49,6 @@
 
 .planning-section {
 	align-items: center;
-	background-image: url("../../images/swish-bars.png");
 	display: flex;
 	flex-direction: column;
 	width: 100vw;

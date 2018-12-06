@@ -7,8 +7,15 @@
     --dark-grey: #5d5d5d;
     --border-radius: 4px;
 
-    --dark-green: #44813E;
+/*Green Palatte*/
+/*    --dark-green: #44813E;
     --light-green: #92C24C;
+    --cream: #FFFADD;
+    --brown: #916A2A;
+    --yellow: #FCD949;*/
+
+    --dark-green: #CC3980; /*purple*/
+    --light-green: #03A3A4; /*blue*/
     --cream: #FFFADD;
     --brown: #916A2A;
     --yellow: #FCD949;
@@ -41,17 +48,28 @@ button {
 		background-color: rgba(0,0,0,.2)
 	}
 
+input {
+	border-radius: var(--border-radius);
+	border: 1px solid var(--light-grey);
+	border-style: none;
+	color: var(--dark-grey);
+	font-size: 1rem;
+	padding: .25rem;
+}
+	input:focus {
+		outline-color: var(--yellow);
+	}
+
 section {
 	display: flex;
 	flex-direction: row;
 }
 
-.recipe-container {
-	height: 100vh;
-	background-image: url("./images/swish-bars.png");
-}
 
-.planning-view {
+body {
 	height: 100vh;
-	background-image: url("./images/swish-bars.png");
+	background-image: url("./images/swish-bars-02.png");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: left bottom;
 }

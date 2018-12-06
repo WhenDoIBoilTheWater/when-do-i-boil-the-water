@@ -20,21 +20,24 @@
 }
 
 .cook-button {
-	background: none;
 	background-color: white;
 	border: none;
-	border-radius: var(--border-radius);
 	color: var(--dark-green);
-	cursor: pointer;
 	display: block;
-	font: inherit;
 	margin: 0 auto;
-	outline: inherit;
 	padding: 1rem 4rem;
 }
 	.cook-button:hover {
 		background-color: rgba(0,0,0,.1)
 	}
+.save-button {
+	background-color: white;
+	border: none;
+	color: var(--dark-green);
+	display: block;
+	margin: 0 auto;
+	padding: 1rem 4rem;
+}
 
 .new-meal-summary {
 	background-color: var(--light-green);
@@ -48,6 +51,7 @@
 	}
 
 .recipe-li {
+	background-color: white;
 	border: 1px solid var(--light-grey);
 	border-radius: var(--border-radius);
 	margin: .5rem 0;
