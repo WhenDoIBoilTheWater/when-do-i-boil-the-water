@@ -1,5 +1,6 @@
 import React from 'react'
 import BuildMeal from './BuildMeal.js'
+import IngredientsList from '../IngredientsList.js'
 import './css/planning.css'
 
 export class Planning extends React.Component {
@@ -88,17 +89,35 @@ export class Planning extends React.Component {
                         <ul className="meals-ul">
                             {arrayOfMeals.map(meal => {
                                 return <li className="meal-li" key={meal.id}>
-                                            <span className="meal-li-name" onClick={() => {
-                                                this.props.setMeal(meal)
-                                            }}>
-                                                {meal.name}
-                                            </span> 
-                                            <span className="recipe-remove-button" onClick={
-                                                () => {
-                                                    this.fetchRemoveMeal(meal.id);
-                                            }}>
-                                                &times; 
-                                            </span>
+                                			<div className="meal-li-initial-stuff">
+	                                            <span className="meal-li-name" onClick={() => {
+	                                                this.props.setMeal(meal)
+	                                            }}>
+	                                                {meal.name}
+	                                            </span> 
+	                                            <span className="vertical-ellipsis" onClick={()=>{
+	                                                if(this.state.ingredientListToView === meal.id){
+	                                                	this.setState({
+		                                                    ingredientListToView: 0
+		                                                })
+	                                                } else {
+		                                                this.setState({
+		                                                    ingredientListToView: meal.id
+		                                                })
+	                                                	
+	                                                }
+	                                                }}>&#8942;
+	                                            </span>
+	                                            <span className="recipe-remove-button" onClick={
+	                                                () => {
+	                                                    this.fetchRemoveMeal(meal.id);
+	                                            }}>
+	                                                &times; 
+	                                            </span>
+	                                        </div>
+                                            {this.state.ingredientListToView === meal.id ? (
+                                            	<IngredientsList recipeArray={meal.recipes} />
+                                            	) : (<p />)}
                                         </li>                
                             })}
                         </ul>
