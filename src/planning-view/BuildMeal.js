@@ -66,7 +66,7 @@ class BuildMeal extends React.Component {
                     }}>
                         ➦
                     </span>
-                    <h2>Which would you like to cook?</h2>
+                    <h2>What's for dinner?</h2>
                 </div>
                 <ul className="list-of-recipes">
                     {this.state.arrayOfRecipes.map(recipe => {
