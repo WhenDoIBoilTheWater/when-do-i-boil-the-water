@@ -14,9 +14,9 @@
     --brown: #916A2A;
     --tertiary-color: #FCD949;*/
 
-    --primary-color: #0FBDB0; /*blue*/
-    --secondary-color: #CC3980; /*purple*/
-    --tertiary-color: #F05675;
+    --primary-color: #8ED081; 
+    --secondary-color: #C7AC92; 
+    --tertiary-color: #F0EC57;
     --cream: #FFFADD;
     --brown: #916A2A;
 
@@ -67,7 +67,7 @@ section {
 
 body {
 	height: 100vh;
-	background-image: url("./images/swish-bars-02.png");
+	background-image: url("./images/swish-bars-03.png");
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position: left bottom;
