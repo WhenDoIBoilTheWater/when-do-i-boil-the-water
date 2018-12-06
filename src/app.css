@@ -8,20 +8,19 @@
     --border-radius: 4px;
 
 /*Green Palatte*/
-/*    --dark-green: #44813E;
-    --light-green: #92C24C;
+/*    --secondary-color: #44813E;
+    --primary-color: #92C24C;
     --cream: #FFFADD;
     --brown: #916A2A;
-    --yellow: #FCD949;*/
+    --tertiary-color: #FCD949;*/
 
-    --dark-green: #CC3980; /*purple*/
-    --light-green: #03A3A4; /*blue*/
+    --primary-color: #0FBDB0; /*blue*/
+    --secondary-color: #CC3980; /*purple*/
+    --tertiary-color: #F05675;
     --cream: #FFFADD;
     --brown: #916A2A;
-    --yellow: #FCD949;
 
     --app-name: 'Reciplanner';
-
 }
 
 * {
@@ -57,7 +56,7 @@ input {
 	padding: .25rem;
 }
 	input:focus {
-		outline-color: var(--yellow);
+		outline-color: var(--tertiary-color);
 	}
 
 section {
