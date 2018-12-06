@@ -27,7 +27,7 @@ export class TimerCard extends React.Component {
 
 
     	return(
-    		<section className="timer-card">
+    		<section className="timer-card cooking-view-card">
 	    		<p>{this.state.description}</p>
 	    		<p>{this.state.whenOClock}</p>
     		</section>

@@ -6,7 +6,7 @@
 
 .recipe {
 	display: block;
-	margin: 1rem 0;
+	margin: 0 0 2rem 0;
 }
 
 .recipe-container {
@@ -21,7 +21,7 @@
 }
 
 .recipe-name {
-	background-color: var(--light-green);
+	background-color: var(--primary-color);
 	color: white;
 	padding: .5rem 0;
 	margin-bottom: .5rem;

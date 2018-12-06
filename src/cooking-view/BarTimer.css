@@ -2,7 +2,7 @@
     animation-name: 'barTimerAnimation';
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    background-color: var(--light-green);
+    background-color: var(--primary-color);
     height: 5px;
 }
 

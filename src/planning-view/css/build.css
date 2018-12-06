@@ -1,7 +1,7 @@
 .added-recipe-li {
 	background-color: white;
 	border-radius: var(--border-radius);
-	color: var(--dark-green);
+	color: var(--secondary-color);
 	display: flex;
 	justify-content: space-between;
 	padding: .5rem;
@@ -19,35 +19,39 @@
 	justify-content: space-around;
 }
 
-.cook-button {
+.build-meal-button {
 	background-color: white;
 	border: none;
-	color: var(--dark-green);
+	color: var(--secondary-color);
 	display: block;
+	font-weight: bold;
 	margin: 0 auto;
-	padding: 1rem 4rem;
+	padding: 1rem 0;
+	width: 40vw;
 }
-	.cook-button:hover {
+	.build-meal-button:hover {
 		background-color: rgba(0,0,0,.1)
 	}
-.save-button {
+/*.save-button {
 	background-color: white;
 	border: none;
-	color: var(--dark-green);
+	color: var(--secondary-color);
 	display: block;
+	font-weight: bold;
 	margin: 0 auto;
 	padding: 1rem 4rem;
-}
+}*/
 
 .new-meal-summary {
-	background-color: var(--light-green);
+	background-color: var(--primary-color);
 
 	padding: 1rem;
 }
 	.new-meal-summary h3 {
-		border-bottom: 3px solid var(--dark-green);
+		border-bottom: 5px solid var(--secondary-color);
 		color: white;
 		margin-bottom: 1rem;
+		padding-bottom: .5rem;
 	}
 
 .recipe-li {
@@ -66,7 +70,7 @@
 	cursor: pointer;
 	color: white;
 	text-align: center;
-	background-color: var(--light-green);
+	background-color: var(--primary-color);
 	border-radius: 50%;
 	margin-left: .5rem;
 	width: 1.5rem;
@@ -79,7 +83,7 @@
 }
 
 .top-bar {
-	background-color: var(--light-green);
+	background-color: var(--primary-color);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -90,7 +94,7 @@
 	.top-bar .back-button {
 		background-color: white;
 		border-radius: var(--border-radius);
-		color: var(--light-green);
+		color: var(--primary-color);
 		min-width: 2rem;
 		text-align: center;
 		font-style: bold;
@@ -99,6 +103,6 @@
 		transform: scaleX(-1);
 	}
 	.top-bar h2 {
-		background-color: var(--light-green);
+		background-color: var(--primary-color);
 		color: white;
 	}

@@ -31,7 +31,7 @@
 }
 
 .new-meal-button {
-	background-color: var(--light-green);
+	background-color: var(--primary-color);
 	border: inherit;
 	border-radius: 50%;
 	color: white;
@@ -63,7 +63,7 @@
 	display: block;
 }
 	.saved-meals-section h2 {
-		background-color: var(--light-green);
+		background-color: var(--primary-color);
 		color: white;
 		margin-bottom: 1rem;
 		padding: .5rem;
