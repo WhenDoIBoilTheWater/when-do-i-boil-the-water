@@ -30,7 +30,7 @@ export class TimerCard extends React.Component {
     		<section className="timer-card cooking-view-card">
 	    		<p>{this.state.description}</p>
 	    		<p>{this.state.whenOClock}</p>
-                <p>{this.state.when - this.props.localSeconds} seconds until</p>
+                <p>in {this.state.when - this.props.localSeconds} seconds</p>
     		</section>
     	)
     }
