@@ -47,6 +47,7 @@ button {
 		background-color: rgba(0,0,0,.2)
 	}
 
+
 input {
 	border-radius: var(--border-radius);
 	border: 1px solid var(--light-grey);
@@ -59,10 +60,10 @@ input {
 		outline-color: var(--tertiary-color);
 	}
 
-section {
+/*section {
 	display: flex;
 	flex-direction: row;
-}
+}*/
 
 
 body {
@@ -72,3 +73,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: bottom 0 left 0;
 }
+
+.dim-on-hover:hover{
+		background-color: rgba(0,0,0,.2)
+	}

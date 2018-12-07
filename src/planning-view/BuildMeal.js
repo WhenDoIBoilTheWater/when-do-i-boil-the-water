@@ -1,5 +1,6 @@
 import React from 'react'
 import './css/build.css'
+import IngredientsList from '../IngredientsList'
 
 class BuildMeal extends React.Component {
 
@@ -65,13 +66,37 @@ class BuildMeal extends React.Component {
                     }}>
                         ➦
                     </span>
-                    <h2>Which would you like to cook?</h2>
+                    <h2>What's for dinner?</h2>
                 </div>
                 <ul className="list-of-recipes">
                     {this.state.arrayOfRecipes.map(recipe => {
-                        return <li className="recipe-li" key={recipe.id} onClick={() => {
-                             this.fetchAddRecipeToMeal(recipe.id) 
-                            }}>{recipe.name}</li>
+                        return (
+                            <li className="recipe-li" key={recipe.id}>
+                            	<div className="recipe-top-row">
+		                            <span className="dim-on-hover recipe-you-could-select-in-build-view" onClick={() => {
+			                            	this.fetchAddRecipeToMeal(recipe.id) 
+			                            }}>
+			                            {recipe.name}
+		                            </span>
+		                            <span className="dim-on-hover vertical-ellipsis" onClick={()=>{
+			                            	if(this.state.ingredientListToView === recipe.id){
+			                            		this.setState({
+			                            			ingredientListToView: 0
+			                            		})
+			                            	} else {
+			                            		this.setState({
+			                            			ingredientListToView: recipe.id
+			                            		})
+
+			                            	}
+			                            }}>&#8942;
+		                            </span>
+		                        </div>
+                            {this.state.ingredientListToView === recipe.id ? (
+                                            	<IngredientsList recipeArray={[recipe]} />
+                                            	) : (<p />)}
+                            </li>
+						)
                     })}
                 </ul>
 

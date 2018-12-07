@@ -58,13 +58,21 @@
 	background-color: white;
 	border: 1px solid var(--light-grey);
 	border-radius: var(--border-radius);
+	display: block;
 	margin: .5rem 0;
 	padding: .5rem;
 	width: 100%;
 }
-	.recipe-li:hover{
-		background-color: rgba(0,0,0,.1)
-	}
+
+.recipe-top-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.recipe-you-could-select-in-build-view {
+	border-radius: var(--border-radius);
+	width: 100%;
+}
 
 .recipe-remove-button {
 	cursor: pointer;
@@ -87,6 +95,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	padding: .25rem;
 	width: 100vw;
 
