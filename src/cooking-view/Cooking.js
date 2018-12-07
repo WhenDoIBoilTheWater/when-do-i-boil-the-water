@@ -6,16 +6,24 @@ class Cooking extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			meal: this.props.meal
+			meal: this.props.meal,
+			globalSeconds: 0
 		}
+
+		this.tick = this.tick.bind(this);
+		setInterval(this.tick, 1000)
 	}
+
+	tick =()=>{
+			this.setState({globalSeconds: this.state.globalSeconds+1})
+		}
 
 	render(){
 
 		return(
 			<section className="recipe-container">
 				{this.state.meal.recipes.map(recipe =>{
-					return <Recipe key={recipe.id} recipe={recipe} meal={this.state.meal} />
+					return (<Recipe key={recipe.id} recipe={recipe} meal={this.state.meal} localSeconds={this.state.globalSeconds} />)
 				})}
 				<StopCookingButton setView={this.props.setView} />
 			</section>

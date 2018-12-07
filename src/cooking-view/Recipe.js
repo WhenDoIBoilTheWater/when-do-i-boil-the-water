@@ -10,24 +10,24 @@ export class Recipe extends React.Component {
 			recipe: this.props.recipe,
 			meal: this.props.meal,
 			arrayOfTimers: [],
-			globalSeconds: 0,
+			localSeconds: 0,
 			currentStepDescription: 'loading...'
 		};
 
 		this.buildTimers()
-
-		this.tick = this.tick.bind(this);
+        this.tick = this.tick.bind(this);
+        setInterval(this.tick, 1000)
 	}   
 
 	tick =()=>{
-		if (this.state.arrayOfTimers[0]){
-			this.state.arrayOfTimers.forEach(timer=>{
-				if (timer.when === this.state.globalSeconds){
-					timer.callback()
-				}
-			})
-			this.setState({globalSeconds: this.state.globalSeconds+1})
-		}
+        // if (this.state.arrayOfTimers[0]){
+            this.state.arrayOfTimers.forEach(timer=>{
+                if (timer.when === this.state.localSeconds){
+                    timer.callback()
+                }
+            })
+			this.setState({localSeconds: this.props.localSeconds})
+		// }
 	}
 
 	setTimer(when, description, callback){
@@ -38,17 +38,17 @@ export class Recipe extends React.Component {
 	buildTimers(){
         //set a timer for each step
         this.state.recipe.steps.forEach((step)=>{
-        	this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
+            this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                 //callback function:
                 let length
                 if(this.state.arrayOfTimers[1]){
-                	length = this.state.arrayOfTimers[1].when - this.state.globalSeconds
+                	length = this.state.arrayOfTimers[1].when - this.state.localSeconds
                 }
                 else {length = 0}
                 this.setState({
                 	currentStepDescription: step.description,
                 	currentStepLength: length
-                })
+                    })
                 this.state.arrayOfTimers.shift()
             })
         })
@@ -68,8 +68,6 @@ export class Recipe extends React.Component {
             this.state.arrayOfTimers.shift();
         })
 
-        //start ticking
-        setInterval(this.tick, 1000)
 
     }
 
@@ -83,14 +81,14 @@ export class Recipe extends React.Component {
 
     	return (
     		<section className="recipe">
-	    		<h4 className="recipe-time-seconds">{this.state.globalSeconds}</h4>
+	    		<h4 className="recipe-time-seconds">{this.state.localSeconds}</h4>
 	    		<h1 className="recipe-name">{this.state.recipe.name}</h1>
 	    		<div className="steps-container">
 		    		{currentStep}
 		    		<ul className="list-of-steps">
 			    		{this.state.arrayOfTimers.map(timer => {
 			    			return(
-			    				(<TimerCard key={timer.when} when={timer.when} description={timer.description} />)
+			    				(<TimerCard key={timer.when} when={timer.when} description={timer.description} stepLength={timer.stepLength} localSeconds={this.state.localSeconds} />)
 			    				)
 			    		})}
 		    		</ul>
