@@ -16,7 +16,7 @@ export class Recipe extends React.Component {
 
 		this.buildTimers()
         this.tick = this.tick.bind(this);
-        setInterval(this.tick, 1000)
+        
 	}   
 
 	tick =()=>{
@@ -68,7 +68,7 @@ export class Recipe extends React.Component {
             this.state.arrayOfTimers.shift();
         })
 
-
+        setInterval(this.tick, 500)
     }
 
 

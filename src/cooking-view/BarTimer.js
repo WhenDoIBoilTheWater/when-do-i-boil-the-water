@@ -2,10 +2,9 @@ import React from 'react'
 import './BarTimer.css'
 
 class BarTimer extends React.Component {
-    // constructor(props){
-    //     super(props)
-
-    // }
+    constructor(props){
+        super(props)
+    }
 
     render(){
         let length = `${this.props.length}s`

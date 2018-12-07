@@ -3,11 +3,13 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     background-color: var(--primary-color);
+    border-radius: var(--border-radius);
     height: 5px;
 }
 
 .bar-timer-field{
     background-color: var(--med-grey);
+    border-radius: var(--border-radius);
     position: relative;
     width: 100wv;
 }
