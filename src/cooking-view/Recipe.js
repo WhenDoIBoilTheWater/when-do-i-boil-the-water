@@ -43,9 +43,8 @@ export class Recipe extends React.Component {
                 let length
                 if(this.state.arrayOfTimers[1]){
                 	length = this.state.arrayOfTimers[1].when - this.state.globalSeconds
-                } else {
-                	length = 0
                 }
+                else {length = 0}
                 this.setState({
                 	currentStepDescription: step.description,
                 	currentStepLength: length
@@ -53,22 +52,24 @@ export class Recipe extends React.Component {
                 this.state.arrayOfTimers.shift()
             })
         })
-        setInterval(this.tick, 1000)
 
         //sort the timers by when they go off
         this.state.arrayOfTimers.sort(function (a, b) {
-        	return a.when - b.when;
+            return a.when - b.when;
         });
 
         //set a timer for the last step, which is to serve the food
         this.setTimer(this.state.meal.length, 'Serve', () => {
-        	this.setState({
-        		currentStepDescription: 'Serve!',
-        		currentStepLength: 0
-        	})
+            this.setState({
+                currentStepDescription: 'Serve!',
+                currentStepLength: 0
+            })
 
-        	this.state.arrayOfTimers.shift();
+            this.state.arrayOfTimers.shift();
         })
+
+        //start ticking
+        setInterval(this.tick, 1000)
 
     }
 

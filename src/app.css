@@ -60,10 +60,10 @@ input {
 		outline-color: var(--tertiary-color);
 	}
 
-section {
+/*section {
 	display: flex;
 	flex-direction: row;
-}
+}*/
 
 
 body {
