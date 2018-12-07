@@ -46,7 +46,7 @@ export class App extends React.Component {
         }
         if (this.state.view === 'cookbook'){
             return (
-                <Cookbook />
+                <Cookbook setView={this.setView}/>
             )
         }
         if (this.state.view === 'spotify'){

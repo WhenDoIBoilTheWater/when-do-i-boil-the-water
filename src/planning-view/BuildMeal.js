@@ -116,12 +116,12 @@ class BuildMeal extends React.Component {
                         }
                     </ul>
                     <section className="button-section">
-                        <button className="cook-button" on onClick={() => {
+                        <button className="build-meal-button cook-button" on onClick={() => {
                             this.props.setMeal(this.state.newMeal) 
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             }}>Cook</button>
 
-                        <button className="save-button" onClick={() => {
+                        <button className="build-meal-button save-button" onClick={() => {
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             
                             }}>Save</button>
