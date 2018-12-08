@@ -1,6 +1,6 @@
 .bar-timer-bar{
     animation-name: 'barTimerAnimation';
-    animation-iteration-count: infinite;
+/*    animation-iteration-count: infinite;*/
     animation-timing-function: linear;
     background-color: var(--primary-color);
     border-radius: var(--border-radius);
@@ -15,11 +15,11 @@
 }
 
 @keyframes barTimerAnimation {
-    from {
+    0% {
         width: 0%;
     }
 
-    to {
+    100% {
         width: 100%;
     }
 }

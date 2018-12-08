@@ -11,7 +11,8 @@ export class Recipe extends React.Component {
 			meal: this.props.meal,
 			arrayOfTimers: [],
 			localSeconds: 0,
-			currentStepDescription: 'loading...'
+			currentStepDescription: 'loading...',
+            shouldBarTimerRestart: false,
 		};
 
 		this.buildTimers()
@@ -47,7 +48,8 @@ export class Recipe extends React.Component {
                 else {length = 0}
                 this.setState({
                 	currentStepDescription: step.description,
-                	currentStepLength: length
+                	currentStepLength: length,
+                    shouldBarTimerRestart: true
                     })
                 this.state.arrayOfTimers.shift()
             })
@@ -71,12 +73,15 @@ export class Recipe extends React.Component {
         setInterval(this.tick, 500)
     }
 
+    barTimerShouldNotRestart = () => {
+        this.setState({shouldBarTimerRestart: false})
+    }
 
 
     render() {
     	let currentStep
     	if (this.state.currentStepDescription !== 'loading...'){
-    		currentStep = <CurrentStepCard description={this.state.currentStepDescription} length={this.state.currentStepLength} />
+    		currentStep = <CurrentStepCard shouldBarTimerRestart={this.state.shouldBarTimerRestart} barTimerShouldNotRestart={this.barTimerShouldNotRestart} description={this.state.currentStepDescription} length={this.state.currentStepLength} />
     	}
 
     	return (

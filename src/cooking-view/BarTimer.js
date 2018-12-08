@@ -2,15 +2,18 @@ import React from 'react'
 import './BarTimer.css'
 
 class BarTimer extends React.Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props)
+
+    // }
 
     render(){
-        let length = `${this.props.length}s`
-        const styles = {
+
+        let length = `${this.props.length*1000-1}ms`
+        let styles = {
             animationDuration: length
         }
+
 
         return(
             <div className="bar-timer-field">
