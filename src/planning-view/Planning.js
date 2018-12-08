@@ -108,7 +108,7 @@ export class Planning extends React.Component {
 	                                                }
 	                                                }}>&#8942;
 	                                            </span>
-	                                            <span className="recipe-remove-button" onClick={
+	                                            <span className="recipe-remove-button little-red-button" onClick={
 	                                                () => {
 	                                                    this.fetchRemoveMeal(meal.id);
 	                                            }}>

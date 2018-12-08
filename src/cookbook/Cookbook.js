@@ -1,5 +1,7 @@
 import React from 'react'
+import StopCookingButton from "../cooking-view/StopCookingButton"
 import './cookbook.css'
+
 
 class Cookbook extends React.Component {
 	constructor(props){
@@ -7,33 +9,31 @@ class Cookbook extends React.Component {
 
 		this.state = {
 			steps : [],
-			ingredients : []
+			ingredients : [],
+			recipeLength : 0,
+
 		}
 	}
 
 
-	// fetchRecipes(){
-	// 	fetch(`http://localhost:8080/api/recipes`).then(res => res.json()).then(data => {
-	// 		this.setState({
-	// 			arrayOfRecipes: data
-	// 		})
-	// 	})
-	// }
-
-
 	componentDidMount() {
-		document.querySelector('.recipe-name-input').value = "New Recipe";
-		document.querySelector('.recipe-description-input').value = "Recipe Description";
-		document.querySelector('.recipe-serving-size-input').value = "2";
+		// document.querySelector('.recipe-name-input').value = "New Recipe";
+		// document.querySelector('.recipe-description-input').value = "Recipe Description";
+		// document.querySelector('.recipe-serving-size-input').value = "2";
 
-		document.querySelector('.new-ingredient-name-input').value = "Ingredient";
-		document.querySelector('.new-ingredient-quantity-input').value = "How Much?";
+		// document.querySelector('.new-ingredient-name-input').value = "Ingredient";
+		// document.querySelector('.new-ingredient-quantity-input').value = "How Much?";
 
-		document.querySelector('.new-step-length-input').value = "How Long?";
-		document.querySelector('.new-step-description-input').value = "Step description?";
+		// document.querySelector('.new-step-length-input').value = "How Long?";
+		// document.querySelector('.new-step-description-input').value = "Step description?";
 	}
 	
 	submitRecipe = () => {
+		if(document.querySelector('.recipe-name-input').value === '' ||  document.querySelector('.recipe-description-input').value === '' || document.querySelector('.recipe-serving-size-input').value === ''){
+			alert('You failed to fill in your recipe details')
+			return
+		}
+
 		fetch(`http://localhost:8080/api/recipes/add`,{
 			method : "POST",
 			body : JSON.stringify({
@@ -46,32 +46,109 @@ class Cookbook extends React.Component {
 		}).then(() => { this.props.setView("planning")})
 	}
 
-	// addIngredient () => {
+	submitIngredient = () => {
+		if(document.querySelector('.new-ingredient-name-input').value === '' || document.querySelector('.new-ingredient-quantity-input').value === ''){
+			alert('You failed to fill in everything for your ingredient')
+			return
+		}
 
-	// }
+		let ingredientArray = this.state.ingredients
+		let newIngredient = {
+			ingredientsName: document.querySelector('.new-ingredient-name-input').value,
+			ingredientsQty: document.querySelector('.new-ingredient-quantity-input').value,
+		}
+		ingredientArray.push(newIngredient)
+		this.setState({
+			ingredients: ingredientArray
+		})
+		document.querySelector('.new-ingredient-name-input').value = ''
+		document.querySelector('.new-ingredient-quantity-input').value = ''
+	}
+
+
+	submitStep = () => {
+		if(document.querySelector('.new-step-description-input').value === '' || document.querySelector('.new-step-length-input').value === ''){
+			alert('You failed to fill in everything for your step')
+			return
+		}
+
+		let stepArray = this.state.steps
+		let newStep = {
+			stepDescription: document.querySelector('.new-step-description-input').value,
+			secondsToEnd: 0
+		}
+
+		stepArray.push(newStep)
+		let newStepLength = document.querySelector('.new-step-length-input').value
+		
+		stepArray.forEach(step => {
+			step.secondsToEnd = (parseInt(step.secondsToEnd) + parseInt(newStepLength))
+		})
+
+		this.setState({
+			steps: stepArray
+		})
+
+		document.querySelector('.new-step-description-input').value = ''
+		document.querySelector('.new-step-length-input').value = ''
+	}
+
+
 	render(){
 
 		return(
 			<section className="cookbook-section">
 				<h1>Add a New Recipe: </h1>
-				<section>
-					<input className="recipe-name-input" type="text" />
-					<textarea className="recipe-description-input"></textarea>
-					<input className="recipe-serving-size-input" type="text" />
+
+				<header>
+					<label>Recipe Name:<input className="recipe-name-input" type="text" /></label>
+					<label>Serving Size:<input className="recipe-serving-size-input" type="text" /></label>
+					<label>Description:<textarea className="recipe-description-input"></textarea></label>
+					
+				</header>
+
+
+				<section className="ingredient-in-new-recipe-section">
+					<div className="add-ingredients-to-new-recipe">
+						<label>Add Ingredient:<input className="new-ingredient-name-input" type="text" /></label>
+						<label>Quantity:<input className="new-ingredient-quantity-input" type="text" /></label>
+						<button className="add-ingredient-button little-red-button" onClick={()=>{this.submitIngredient()}}>+</button>
+					</div>
+					<div className="added-ingredients-for-new-recipe">
+						<span>Ingredients:</span>
+						{this.state.ingredients.map(ingredient=>{
+							return(<li>{ingredient.ingredientsQty} {ingredient.ingredientsName}</li>)
+						})}
+					</div>
 				</section>
-				<section className="add-ingredients-to-new-recipe">
-					<input className="new-ingredient-name-input" type="text" />
-					<input className="new-ingredient-quantity-input" type="text" />
-					<button className="add-ingredient-button little-red-button" >+</button>
-				</section>
+
+
 				<section className="add-step-to-new-recipe-section">
-					<input className="new-step-length-input" type="text"/>
-					<textarea className="new-step-description-input" type="text"></textarea>
-					<button className="add-step-button little-red-button">+</button>
+					<div>
+						<div className="new-recipe-new-step-top-row">
+							<label>Step Length:<input className="new-step-length-input" type="number"/></label>
+							<button className="add-step-button little-red-button" onClick={()=>{this.submitStep()}}>+</button>
+						</div>
+						<label>Step Description: 
+							<textarea className="new-step-description-input" type="text"></textarea>
+						</label>
+					</div>
+					<div className="added-steps-for-new-recipe">
+						<span>Steps:</span>
+						{this.state.steps.map(step=>{
+							return(<li>{step.stepDescription}</li>)
+						})}
+					</div>
 				</section>
-				<button className="submit-recipe-button" onClick={() => {
-					this.submitRecipe()
-				}}> Submit New Recipe</button>
+
+				<div className="submit-new-recipe-button-area">
+					<button className="submit-recipe-button" onClick={() => {
+						this.submitRecipe()
+					}}> Submit New Recipe</button>
+				</div>
+
+				<StopCookingButton setView={this.props.setView} />
+
 			</section>
 		)
 	}
