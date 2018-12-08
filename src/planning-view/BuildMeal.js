@@ -108,7 +108,7 @@ class BuildMeal extends React.Component {
                         {this.state.newMeal.recipes.map(recipe => {
                             return <li className="added-recipe-li" key={recipe.id}>
                                 <p>{recipe.name}</p>
-                                <span className="recipe-remove-button" onClick={() => {
+                                <span className="recipe-remove-button little-red-button" onClick={() => {
                                     this.fetchRemoveRecipe(recipe.id);
                                 }}> &times; </span>
                             </li>

@@ -48,16 +48,21 @@ button {
 	}
 
 
-input {
+input, textarea {
 	border-radius: var(--border-radius);
-	border: 1px solid var(--light-grey);
 	border-style: none;
+	border: 1px solid var(--dark-grey);
 	color: var(--dark-grey);
+	font: inherit;
 	font-size: 1rem;
 	padding: .25rem;
 }
 	input:focus {
 		outline-color: var(--tertiary-color);
+	}
+	textarea {
+		display: block;
+		resize: none;
 	}
 
 /*section {
@@ -76,4 +81,18 @@ body {
 
 .dim-on-hover:hover{
 		background-color: rgba(0,0,0,.2)
+	}
+
+.little-red-button{
+	background-color: var(--primary-color);
+	border: none;
+	border-radius: 50%;
+	color: white;
+	flex-shrink: 0;
+	flex-grow: 0;
+	height: 1.5rem;
+	width: 1.5rem;
+}
+	.little-red-button * {
+		color: white;
 	}

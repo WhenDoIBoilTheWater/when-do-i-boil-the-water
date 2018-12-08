@@ -41,6 +41,7 @@ export class App extends React.Component {
             return (
                 <section className="planning-view">
                     <Planning setMeal={this.setMeal} />
+                    <button className="new-meal-button" onClick={()=>{this.setView('cookbook')}}>cookbook</button>
                 </section>
             )
         }
