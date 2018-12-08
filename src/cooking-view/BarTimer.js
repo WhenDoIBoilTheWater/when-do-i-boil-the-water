@@ -9,7 +9,7 @@ class BarTimer extends React.Component {
 
     render(){
 
-        let length = `${this.props.length*1000-10}ms`
+        let length = `${this.props.length*1000-1}ms`
         let styles = {
             animationDuration: length
         }
