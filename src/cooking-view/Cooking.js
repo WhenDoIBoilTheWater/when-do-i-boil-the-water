@@ -25,7 +25,7 @@ class Cooking extends React.Component {
 				{this.state.meal.recipes.map(recipe =>{
 					return (<Recipe key={recipe.id} recipe={recipe} meal={this.state.meal} localSeconds={this.state.globalSeconds} />)
 				})}
-				<StopCookingButton setView={this.props.setView} />
+				<StopCookingButton buttonText={"GO BACK"} setView={this.props.setView} />
 			</section>
 			)
 	}

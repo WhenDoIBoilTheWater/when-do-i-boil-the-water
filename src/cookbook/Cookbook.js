@@ -101,19 +101,19 @@ class Cookbook extends React.Component {
 				<h1>Add a New Recipe: </h1>
 
 				<header>
-					<label>Recipe Name:<input className="recipe-name-input" type="text" /></label>
-					<label>Serving Size:<input className="recipe-serving-size-input" type="text" /></label>
-					<label>Description:<textarea className="recipe-description-input"></textarea></label>
+					<label>Recipe Name: <input className="recipe-name-input" type="text" /></label>
+					<label>Serving Size: <input className="recipe-serving-size-input" type="text" /></label>
+					<label>Description: <textarea className="recipe-description-input"></textarea></label>
 					
 				</header>
 
 
 				<section className="ingredient-in-new-recipe-section">
 					<div className="add-ingredients-to-new-recipe">
-						<label>Add Ingredient:<input className="new-ingredient-name-input" type="text" /></label>
-						<label>Quantity:<input className="new-ingredient-quantity-input" type="text" /></label>
-						<button className="add-ingredient-button little-red-button" onClick={()=>{this.submitIngredient()}}>+</button>
+						<label>Add Ingredient: <input className="new-ingredient-name-input" type="text" /></label>
+						<label>Quantity: <input className="new-ingredient-quantity-input" type="text" /></label>
 					</div>
+						<button className="add-ingredient-button little-red-button" onClick={()=>{this.submitIngredient()}}>+</button>
 					<div className="added-ingredients-for-new-recipe">
 						<span>Ingredients:</span>
 						{this.state.ingredients.map(ingredient=>{
@@ -126,12 +126,12 @@ class Cookbook extends React.Component {
 				<section className="add-step-to-new-recipe-section">
 					<div>
 						<div className="new-recipe-new-step-top-row">
-							<label>Step Length:<input className="new-step-length-input" type="number"/></label>
-							<button className="add-step-button little-red-button" onClick={()=>{this.submitStep()}}>+</button>
+							<label>Step Length: <input className="new-step-length-input" type="number"/></label>
 						</div>
 						<label>Step Description: 
 							<textarea className="new-step-description-input" type="text"></textarea>
 						</label>
+							<button className="add-step-button little-red-button" onClick={()=>{this.submitStep()}}>+</button>
 					</div>
 					<div className="added-steps-for-new-recipe">
 						<span>Steps:</span>
