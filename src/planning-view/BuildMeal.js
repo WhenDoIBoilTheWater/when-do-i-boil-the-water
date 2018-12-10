@@ -11,7 +11,7 @@ class BuildMeal extends React.Component {
             arrayOfRecipes : this.props.arrayOfRecipes,
             newMeal : this.props.passedMeal
         }
-        
+
     }
     fetchAddRecipeToMeal(recipeToAdd){
         fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/addRecipe`, {
@@ -31,6 +31,15 @@ class BuildMeal extends React.Component {
                 mealId : this.state.newMeal.id
             })
         }).then(() => {this.props.setView('premade')})
+    }
+
+    fetchDeleteRecipe(recipeToDelete){
+      fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/recipes/remove`, {
+          method: "POST",
+          body : JSON.stringify({
+              recipeId : recipeToDelete
+          })
+      }).then(res => res.json()).then(data => {this.setState({arrayOfRecipes : data})})
     }
 
     fetchRemoveRecipe(recipeToRemove){
@@ -62,7 +71,7 @@ class BuildMeal extends React.Component {
                 <div className="top-bar">
                     <span className="back-button" style={{cursor : 'pointer'}} onClick={() => {
                         this.fetchRemoveMeal();
-                        
+
                     }}>
                         ➦
                     </span>
@@ -74,7 +83,7 @@ class BuildMeal extends React.Component {
                             <li className="recipe-li" key={recipe.id}>
                             	<div className="recipe-top-row">
 		                            <span className="dim-on-hover recipe-you-could-select-in-build-view" onClick={() => {
-			                            	this.fetchAddRecipeToMeal(recipe.id) 
+			                            	this.fetchAddRecipeToMeal(recipe.id)
 			                            }}>
 			                            {recipe.name}
 		                            </span>
@@ -91,6 +100,12 @@ class BuildMeal extends React.Component {
 			                            	}
 			                            }}>&#8942;
 		                            </span>
+                                <span className="recipe-remove-button little-red-button" onClick={
+                                    () => {
+                                        this.fetchDeleteRecipe(recipe.id);
+                                }}>
+                                    &times;
+                                </span>
 		                        </div>
                             {this.state.ingredientListToView === recipe.id ? (
                                             	<IngredientsList recipeArray={[recipe]} />
@@ -116,14 +131,14 @@ class BuildMeal extends React.Component {
                         }
                     </ul>
                     <section className="button-section">
-                        <button className="build-meal-button cook-button" on onClick={() => {
-                            this.props.setMeal(this.state.newMeal) 
+                        <button className="build-meal-button cook-button" onClick={() => {
+                            this.props.setMeal(this.state.newMeal)
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             }}>Cook</button>
 
                         <button className="build-meal-button save-button" onClick={() => {
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
-                            
+
                             }}>Save</button>
                     </section>
                 </div>
