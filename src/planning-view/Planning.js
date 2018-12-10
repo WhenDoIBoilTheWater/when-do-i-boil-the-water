@@ -129,6 +129,7 @@ export class Planning extends React.Component {
                                     }}><p>+ New Meal</p>
                                 </button>
                             </div>
+                                <button className="new-meal-button" onClick={()=>{this.props.setView('cookbook')}}>cookbook</button>
                     </section>
                 </section>
             )
