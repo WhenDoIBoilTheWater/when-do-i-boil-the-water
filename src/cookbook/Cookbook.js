@@ -88,7 +88,7 @@ class Cookbook extends React.Component {
 		let newStepLengthMinutes = document.querySelector('.new-step-length-minutes-input').value
 		let newStepLengthSeconds = document.querySelector('.new-step-length-seconds-input').value
 
-		newStepLength = (newStepLengthHours*3600 + newStepLengthMinutes *60 + newStepLengthSeconds)
+		newStepLength = parseInt(newStepLengthHours)*3600 + parseInt(newStepLengthMinutes)*60 + parseInt(newStepLengthSeconds)
 		
 		stepArray.forEach(step => {
 			step.secondsToEnd = (parseInt(step.secondsToEnd) + parseInt(newStepLength))
@@ -113,7 +113,7 @@ class Cookbook extends React.Component {
 
 				<header>
 					<label>Recipe Name: <input className="recipe-name-input" type="text" /></label>
-					<label>Serving Size: <input className="recipe-serving-size-input" type="text" /></label>
+					<label>Serving Size: <input className="recipe-serving-size-input" type="number" /></label>
 					<label>Description: <textarea className="recipe-description-input"></textarea></label>
 					
 				</header>
