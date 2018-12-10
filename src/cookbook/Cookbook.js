@@ -24,7 +24,9 @@ class Cookbook extends React.Component {
 		// document.querySelector('.new-ingredient-name-input').value = "Ingredient";
 		// document.querySelector('.new-ingredient-quantity-input').value = "How Much?";
 
-		// document.querySelector('.new-step-length-input').value = "How Long?";
+		document.querySelector('.new-step-length-hours-input').value = 0;
+		document.querySelector('.new-step-length-minutes-input').value = 0;
+		document.querySelector('.new-step-length-seconds-input').value = 0;
 		// document.querySelector('.new-step-description-input').value = "Step description?";
 	}
 	
@@ -67,7 +69,9 @@ class Cookbook extends React.Component {
 
 
 	submitStep = () => {
-		if(document.querySelector('.new-step-description-input').value === '' || document.querySelector('.new-step-length-input').value === ''){
+		if
+			(document.querySelector('.new-step-description-input').value === '' || document.querySelector('.new-step-length-hours-input').value === '' || document.querySelector('.new-step-length-minutes-input').value === '' || document.querySelector('.new-step-length-seconds-input').value === '')
+		{
 			alert('You failed to fill in everything for your step')
 			return
 		}
@@ -79,7 +83,12 @@ class Cookbook extends React.Component {
 		}
 
 		stepArray.push(newStep)
-		let newStepLength = document.querySelector('.new-step-length-input').value
+		let newStepLength
+		let newStepLengthHours = document.querySelector('.new-step-length-hours-input').value
+		let newStepLengthMinutes = document.querySelector('.new-step-length-minutes-input').value
+		let newStepLengthSeconds = document.querySelector('.new-step-length-seconds-input').value
+
+		newStepLength = (newStepLengthHours*3600 + newStepLengthMinutes *60 + newStepLengthSeconds)
 		
 		stepArray.forEach(step => {
 			step.secondsToEnd = (parseInt(step.secondsToEnd) + parseInt(newStepLength))
@@ -90,7 +99,9 @@ class Cookbook extends React.Component {
 		})
 
 		document.querySelector('.new-step-description-input').value = ''
-		document.querySelector('.new-step-length-input').value = ''
+		document.querySelector('.new-step-length-hours-input').value = 0
+		document.querySelector('.new-step-length-minutes-input').value = 0
+		document.querySelector('.new-step-length-seconds-input').value = 0
 	}
 
 
@@ -126,7 +137,12 @@ class Cookbook extends React.Component {
 				<section className="add-step-to-new-recipe-section">
 					<div>
 						<div className="new-recipe-new-step-top-row">
-							<label>Step Length: <input className="new-step-length-input" type="number"/></label>
+							<label>Step Length:
+								<br/>
+								Hours: <input className="new-step-length-hours-input new-step-length-field" type="number"/> 
+								 Minutes: <input className="new-step-length-minutes-input new-step-length-field" type="number"/> 
+								 Seconds: <input className="new-step-length-seconds-input new-step-length-field" type="number"/> 
+							</label>
 						</div>
 						<label>Step Description: 
 							<textarea className="new-step-description-input" type="text"></textarea>
