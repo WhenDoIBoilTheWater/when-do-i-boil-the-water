@@ -1,8 +1,9 @@
 .timer-card {
 	border: 1px solid var(--med-grey);
 	border-radius: var(--border-radius);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	padding: 1rem;
+	flex-shrink: 0;
+	flex-grow: 0;
+	font-size: .8rem;
+	max-width: 80vw;
 }

@@ -96,3 +96,32 @@ body {
 	.little-red-button * {
 		color: white;
 	}
+
+
+/* width */
+::-webkit-scrollbar {
+	height: 6px;
+/*	display: none;*/
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+  border-radius: var(--border-radius);
+  height: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.5);
+}

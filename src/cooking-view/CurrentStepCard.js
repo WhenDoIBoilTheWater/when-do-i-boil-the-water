@@ -30,7 +30,7 @@ class CurrentStepCard extends React.Component {
 
         return(
             <div className="current-step-card cooking-view-card">
-                <h1>{this.props.description}</h1>
+                <p>{this.props.description}</p>
                 {barTimer}
             </div>
         )

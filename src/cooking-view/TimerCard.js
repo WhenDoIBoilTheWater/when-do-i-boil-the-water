@@ -23,14 +23,16 @@ export class TimerCard extends React.Component {
         this.setState({whenOClock: d})
     }
 
-    render() {
+    //<p>in {this.state.when - this.props.localSeconds} seconds</p>
 
+
+    render() {
 
     	return(
     		<section className="timer-card cooking-view-card">
 	    		<p>{this.state.description}</p>
 	    		<p>{this.state.whenOClock}</p>
-                <p>in {this.state.when - this.props.localSeconds} seconds</p>
+
     		</section>
     	)
     }

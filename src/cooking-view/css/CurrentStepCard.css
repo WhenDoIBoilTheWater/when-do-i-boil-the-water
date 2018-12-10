@@ -2,9 +2,6 @@
 	background-color: var(--light-grey);
 	border-radius: var(--border-radius);
 	color: var(--dark-grey);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 
 }
 	.current-step-card h1 {
