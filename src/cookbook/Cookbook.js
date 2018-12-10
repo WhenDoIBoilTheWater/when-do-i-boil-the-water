@@ -34,7 +34,7 @@ class Cookbook extends React.Component {
 			return
 		}
 
-		fetch(`http://localhost:8080/api/recipes/add`,{
+		fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/recipes/add`,{
 			method : "POST",
 			body : JSON.stringify({
 				recipeName : document.querySelector('.recipe-name-input').value,
