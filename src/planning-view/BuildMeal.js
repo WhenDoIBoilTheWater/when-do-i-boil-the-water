@@ -14,7 +14,7 @@ class BuildMeal extends React.Component {
         
     }
     fetchAddRecipeToMeal(recipeToAdd){
-        fetch(`http://localhost:8080/api/meals/addRecipe`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/addRecipe`, {
             method: "POST",
             body : JSON.stringify({
                 mealId : this.state.newMeal.id,
@@ -25,7 +25,7 @@ class BuildMeal extends React.Component {
     }
 
     fetchRemoveMeal(){
-        fetch(`http://localhost:8080/api/meals/remove`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/remove`, {
             method: "POST",
             body : JSON.stringify({
                 mealId : this.state.newMeal.id
@@ -34,7 +34,7 @@ class BuildMeal extends React.Component {
     }
 
     fetchRemoveRecipe(recipeToRemove){
-        fetch(`http://localhost:8080/api/meal/removeRecipe`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meal/removeRecipe`, {
             method: "POST",
             body : JSON.stringify({
                 recipeId : recipeToRemove,
@@ -44,7 +44,7 @@ class BuildMeal extends React.Component {
     }
 
     fetchUpdateMealName(name){
-        fetch(`http://localhost:8080/api/meals/updateName`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/updateName`, {
             method : "POST",
             body : JSON.stringify({
                 mealId : this.state.newMeal.id,

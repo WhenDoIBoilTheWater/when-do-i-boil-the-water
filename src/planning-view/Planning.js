@@ -14,7 +14,7 @@ export class Planning extends React.Component {
 
     fetchMeals(){
         console.log("Fetching meals")
-        fetch(`http://localhost:8080/api/meals`).then(res => res.json()).then(data => {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals`).then(res => res.json()).then(data => {
             this.setState({
                 arrayOfMeals: data
             })
@@ -24,7 +24,7 @@ export class Planning extends React.Component {
     }
 
     fetchRecipes(){
-        fetch(`http://localhost:8080/api/recipes`).then(res => res.json()).then(data => {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/recipes`).then(res => res.json()).then(data => {
             this.setState({
                 arrayOfRecipes: data
             })
@@ -33,7 +33,7 @@ export class Planning extends React.Component {
     }
 
     fetchAddMeal(){
-        fetch(`http://localhost:8080/api/meals/add`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/add`, {
             method : "POST",
             body : JSON.stringify({
                 mealName : 'New Meal'
@@ -47,7 +47,7 @@ export class Planning extends React.Component {
     }
 
     fetchRemoveMeal(mealToRemove){
-        fetch(`http://localhost:8080/api/meals/remove`, {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals/remove`, {
             method: "POST",
             body : JSON.stringify({
                 mealId : mealToRemove
@@ -60,7 +60,7 @@ export class Planning extends React.Component {
     }
 
     setView = (newView) => {
-        fetch(`http://localhost:8080/api/meals`).then(res => res.json()).then(data => {
+        fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals`).then(res => res.json()).then(data => {
             this.setState({
                 view : newView,
                 arrayOfMeals: data,
