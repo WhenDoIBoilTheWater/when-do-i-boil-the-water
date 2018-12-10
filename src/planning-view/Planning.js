@@ -41,7 +41,7 @@ export class Planning extends React.Component {
         })
         .then(res => res.json())
         .then(data => this.setState({
-            view : 'build', 
+            view : 'build',
             newMeal : data
         }))
     }
@@ -65,7 +65,7 @@ export class Planning extends React.Component {
                 view : newView,
                 arrayOfMeals: data,
             })
-        })        
+        })
     }
 
     render(){
@@ -94,7 +94,7 @@ export class Planning extends React.Component {
 	                                                this.props.setMeal(meal)
 	                                            }}>
 	                                                {meal.name}
-	                                            </span> 
+	                                            </span>
 	                                            <span className="vertical-ellipsis" onClick={()=>{
 	                                                if(this.state.ingredientListToView === meal.id){
 	                                                	this.setState({
@@ -104,21 +104,21 @@ export class Planning extends React.Component {
 		                                                this.setState({
 		                                                    ingredientListToView: meal.id
 		                                                })
-	                                                	
+
 	                                                }
 	                                                }}>&#8942;
 	                                            </span>
-	                                            <span className="recipe-remove-button little-red-button" onClick={
+	                                            <span className="meal-remove-button little-red-button" onClick={
 	                                                () => {
 	                                                    this.fetchRemoveMeal(meal.id);
 	                                            }}>
-	                                                &times; 
+	                                                &times;
 	                                            </span>
 	                                        </div>
                                             {this.state.ingredientListToView === meal.id ? (
                                             	<IngredientsList recipeArray={meal.recipes} />
                                             	) : (<p />)}
-                                        </li>                
+                                        </li>
                             })}
                         </ul>
                     </section>
@@ -134,7 +134,7 @@ export class Planning extends React.Component {
             )
         }
         if(this.state.view === 'build'){
-            
+
             return(
                 <BuildMeal className="build-view" arrayOfRecipes={arrayOfRecipes} passedMeal={newMeal} setMeal={this.props.setMeal} fetchAddRecipeToMeal={this.fetchAddRecipeToMeal} setView={this.setView}/>
             )
