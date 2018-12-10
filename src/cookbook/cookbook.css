@@ -68,6 +68,10 @@
 }
 
 
+.new-step-length-field {
+	max-width: 5rem;
+}
+
 
 .submit-new-recipe-button-area {
 	margin: 0 auto;
