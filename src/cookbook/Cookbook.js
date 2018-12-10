@@ -117,7 +117,7 @@ class Cookbook extends React.Component {
 					<div className="added-ingredients-for-new-recipe">
 						<span>Ingredients:</span>
 						{this.state.ingredients.map(ingredient=>{
-							return(<li>{ingredient.ingredientsQty} {ingredient.ingredientsName}</li>)
+							return(<li key={ingredient.ingredientsName}>{ingredient.ingredientsQty} {ingredient.ingredientsName}</li>)
 						})}
 					</div>
 				</section>
@@ -136,7 +136,7 @@ class Cookbook extends React.Component {
 					<div className="added-steps-for-new-recipe">
 						<span>Steps:</span>
 						{this.state.steps.map(step=>{
-							return(<li>{step.stepDescription}</li>)
+							return(<li key={step.stepDescription}>{step.stepDescription}</li>)
 						})}
 					</div>
 				</section>

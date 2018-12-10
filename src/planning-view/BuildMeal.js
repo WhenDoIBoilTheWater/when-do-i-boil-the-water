@@ -116,7 +116,7 @@ class BuildMeal extends React.Component {
                         }
                     </ul>
                     <section className="button-section">
-                        <button className="build-meal-button cook-button" on onClick={() => {
+                        <button className="build-meal-button cook-button" onClick={() => {
                             this.props.setMeal(this.state.newMeal) 
                             this.fetchUpdateMealName(document.querySelector('.meal-name').value);
                             }}>Cook</button>
