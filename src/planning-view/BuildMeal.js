@@ -102,7 +102,11 @@ class BuildMeal extends React.Component {
 		                            </span>
                                 <span className="recipe-remove-button little-red-button delete-recipe-from-repo-button" onClick={
                                     () => {
-                                        this.fetchDeleteRecipe(recipe.id);
+                                        let confirmation = window.confirm("You you want to delete this recipe forever?")
+                                        if(confirmation == true){
+                                            this.fetchDeleteRecipe(recipe.id);
+
+                                        }
                                 }}>
                                     &times;
                                 </span>
