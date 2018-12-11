@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "When Do I Boil the Water?",
   "main": "index.js",
-  "homepage": "https://whendoIboilthewater.github.io",
+  "homepage": "https://whendoIboilthewater.github.io/when-do-i-boil-the-water",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
