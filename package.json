@@ -15,6 +15,7 @@
   "author": "Alex Greene, Josh Echt, Kelli Knipe, Max Mraz, Wayne Livingstone",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "gradle": "^1.0.9",
     "react": "^16.2.0",
     "react-countdown-clock": "^2.5.0",
