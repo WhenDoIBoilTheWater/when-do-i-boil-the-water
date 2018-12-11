@@ -100,7 +100,7 @@ class BuildMeal extends React.Component {
 			                            	}
 			                            }}>&#8942;
 		                            </span>
-                                <span className="recipe-remove-button little-red-button" onClick={
+                                <span className="recipe-remove-button little-red-button delete-recipe-from-repo-button" onClick={
                                     () => {
                                         this.fetchDeleteRecipe(recipe.id);
                                 }}>

@@ -32,6 +32,17 @@
 	.build-meal-button:hover {
 		background-color: rgba(0,0,0,.1)
 	}
+
+
+.delete-recipe-from-repo-button {
+	cursor: pointer;
+	text-align: center;
+	margin-left: .5rem;
+}
+	.delete-recipe-from-repo-button:hover {
+		background-color: rgba(0,0,0,.1)	
+	}
+
 /*.save-button {
 	background-color: white;
 	border: none;
