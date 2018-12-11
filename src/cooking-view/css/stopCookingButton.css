@@ -1,4 +1,34 @@
+/*.stop-cooking-button {
+	background-color: var(--primary-color);
+	border: none;
+	border-radius: 50%;
+
+	height: 8rem;
+	width: 8rem;
+
+	flex-shrink: 0;
+}
+*/
+
+.stop-cooking-button {
+	background-color: var(--primary-color);
+	border: none;
+	padding: 1rem;
+	width: 100%;
+
+}
+	.stop-cooking-button:hover{
+		background-color: var(--secondary-color);
+/*		box-shadow: 0 0 15px 2px var(--secondary-color) inset;*/
+	}
+
+
+	@media only screen and (min-width: 750px) {
+		.stop-cooking-button {
+
+		}
+	}
+
 .stop-cooking-button * {
 	color: white;
-
 }

@@ -121,7 +121,7 @@ class BuildMeal extends React.Component {
 
                 <div className="new-meal-summary">
                     <h3>
-                        <input className="meal-name" type="text"></input>: {this.state.newMeal.length} seconds
+                        <input className="meal-name" type="text"></input>: {Math.floor(this.state.newMeal.length /60)} minutes
                     </h3>
                     <ul className="list-of-added-recipes">
                         {this.state.newMeal.recipes.map(recipe => {

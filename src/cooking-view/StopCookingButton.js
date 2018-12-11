@@ -14,7 +14,7 @@ class StopCookingButton extends React.Component {
     render(){
 
         return(
-            <button className="stop-cooking-button new-meal-button" onClick={()=>{this.props.setView('planning')}}>
+            <button className="stop-cooking-button" onClick={()=>{this.props.setView('planning')}}>
                 <strong>ABORT MEAL!</strong>
             </button>
         )
