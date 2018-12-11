@@ -1,7 +1,9 @@
 {
-  "main.css": "static/css/main.b0838ac5.css",
-  "main.css.map": "static/css/main.b0838ac5.css.map",
-  "main.js": "static/js/main.92d2c494.js",
-  "main.js.map": "static/js/main.92d2c494.js.map",
+
+  "main.css": "static/css/main.92b08b48.css",
+  "main.css.map": "static/css/main.92b08b48.css.map",
+  "main.js": "static/js/main.ee9ec9c2.js",
+  "main.js.map": "static/js/main.ee9ec9c2.js.map",
+  "static\\media\\notification-tone-01.mp3": "static/media/notification-tone-01.e2df8bcd.mp3",
   "static\\media\\swish-bars-03.png": "static/media/swish-bars-03.4833fdfa.png"
 }
