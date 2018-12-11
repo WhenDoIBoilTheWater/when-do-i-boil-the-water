@@ -98,6 +98,10 @@ body {
 	}
 
 
+.meal-name, .recipe-name-input {
+	text-transform: capitalize;
+}
+
 /* width */
 ::-webkit-scrollbar {
 	height: 7px;

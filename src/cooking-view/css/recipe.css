@@ -1,17 +1,34 @@
 .cooking-view-card * {
 	max-height: 40vh;
 }
+	.cooking-view-card p {
+		padding: 1rem;
+	}
 
 .list-of-steps {
 	display: flex;
 	flex-direction: row;
 	overflow: auto;
 }
+	@media only screen and (min-width: 750px) {
+		.list-of-steps {
+			display: block;
+			overflow: default;
+		}
+	}
 
 .recipe {
 /*	display: block;*/
 	margin: 0 0 2rem 0;
 }
+	@media only screen and (min-width: 750px) {
+		.recipe {
+			margin: 0 .5rem;
+			flex-shrink: 0;
+			flex-grow: 0;
+			max-width: 30vw;
+		}
+	}
 
 .recipe-container {
 	display: block;
@@ -32,9 +49,14 @@
 .recipe-name {
 	background-color: var(--primary-color);
 	color: white;
-	padding: .5rem 0;
+	padding: .5rem .5rem;
 	margin-bottom: .5rem;
 }
+	@media only screen and (min-width: 750px) {
+		.recipe-name {
+			border-radius: var(--border-radius);
+		}
+	}
 
 .recipe-time-seconds {
 	display: none;
