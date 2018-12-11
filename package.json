@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "When Do I Boil the Water?",
   "main": "index.js",
+  "homepage": "https://whendoIboilthewater.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
-  "author": "CodeMix",
+  "author": "Alex Greene, Josh Echt, Kelli Knipe, Max Mraz, Wayne Livingstone",
   "license": "ISC",
   "dependencies": {
     "gradle": "^1.0.9",
