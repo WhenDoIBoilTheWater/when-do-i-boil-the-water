@@ -93,7 +93,7 @@ export class Planning extends React.Component {
 	                                            <span className="meal-li-name leading-capitals" onClick={() => {
 	                                                this.props.setMeal(meal)
 	                                            }}>
-	                                                {meal.name}
+	                                                {meal.name}: {Math.floor(meal.length / 60)} minutes
 	                                            </span>
 	                                            <span className="vertical-ellipsis" onClick={()=>{
 	                                                if(this.state.ingredientListToView === meal.id){
