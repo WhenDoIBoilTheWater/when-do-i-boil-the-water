@@ -83,6 +83,7 @@
 .recipe-you-could-select-in-build-view {
 	border-radius: var(--border-radius);
 	width: 100%;
+	text-transform: capitalize;
 }
 
 .meal-remove-button {
