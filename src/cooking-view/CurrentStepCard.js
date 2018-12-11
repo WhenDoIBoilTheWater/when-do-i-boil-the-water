@@ -13,7 +13,7 @@ class CurrentStepCard extends React.Component {
 
 
     toggleTimer = () => {
-        console.log('toggle timer has been called')
+
         this.setState({showTimer: false})
         setInterval(
             ()=>{this.setState({showTimer: true})}
