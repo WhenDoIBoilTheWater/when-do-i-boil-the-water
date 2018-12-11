@@ -1,4 +1,6 @@
 .timer-card {
+/*	background-color: rgba(76, 16, 31,.3);*/
+/*	background-color: white;*/
 	border: 1px solid var(--med-grey);
 	border-radius: var(--border-radius);
 /*	padding: 1rem;*/
@@ -6,4 +8,8 @@
 	flex-grow: 0;
 	font-size: .8rem;
 	max-width: 80vw;
+	margin: .5rem 0;
 }
+	.timer-card * {
+		font-weight: bold;
+	}
