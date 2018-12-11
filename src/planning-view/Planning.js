@@ -90,7 +90,7 @@ export class Planning extends React.Component {
                             {arrayOfMeals.map(meal => {
                                 return <li className="meal-li" key={meal.id}>
                                 			<div className="meal-li-initial-stuff">
-	                                            <span className="meal-li-name" onClick={() => {
+	                                            <span className="meal-li-name leading-capitals" onClick={() => {
 	                                                this.props.setMeal(meal)
 	                                            }}>
 	                                                {meal.name}
