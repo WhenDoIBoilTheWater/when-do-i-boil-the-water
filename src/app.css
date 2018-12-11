@@ -91,10 +91,12 @@ body {
 	flex-shrink: 0;
 	flex-grow: 0;
 	height: 1.5rem;
+	text-align: center;
 	width: 1.5rem;
 }
 	.little-red-button * {
 		color: white;
+		text-align: center;
 	}
 
 
@@ -104,7 +106,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-	height: 7px;
+	height: 10px;
 /*	display: none;*/
 }
 

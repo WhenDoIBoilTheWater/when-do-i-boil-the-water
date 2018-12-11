@@ -1,5 +1,9 @@
+.cooking-section {
+	
+}
+
 .cooking-view-card * {
-	max-height: 40vh;
+/*	max-height: 40vh;*/
 }
 	.cooking-view-card p {
 		padding: 1rem;

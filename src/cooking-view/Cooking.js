@@ -21,12 +21,14 @@ class Cooking extends React.Component {
 	render(){
 
 		return(
-			<section className="recipe-container">
-				{this.state.meal.recipes.map(recipe =>{
-					return (<Recipe key={recipe.id} recipe={recipe} meal={this.state.meal} localSeconds={this.state.globalSeconds} />)
-				})}
+			<div className="cooking-section">
+				<section className="recipe-container">
+					{this.state.meal.recipes.map(recipe =>{
+						return (<Recipe key={recipe.id} recipe={recipe} meal={this.state.meal} localSeconds={this.state.globalSeconds} />)
+					})}
+				</section>
 				<StopCookingButton setView={this.props.setView} />
-			</section>
+			</div>
 			)
 	}
 }
