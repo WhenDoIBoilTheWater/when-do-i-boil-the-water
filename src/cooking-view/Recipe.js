@@ -2,7 +2,7 @@ import React from "react";
 import TimerCard from "./TimerCard.js"
 import CurrentStepCard from "./CurrentStepCard"
 import './css/recipe.css'
-import ding from './notification-tone-01.mp3'
+import ding from '../sounds/kitchen-timer.wav'
 
 export class Recipe extends React.Component {
 	constructor(props) {
