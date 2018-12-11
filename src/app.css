@@ -83,6 +83,10 @@ body {
 		background-color: rgba(0,0,0,.2)
 	}
 
+.leading-capitals{
+	text-transform: capitalize;
+}
+
 .little-red-button{
 	background-color: var(--primary-color);
 	border: none;
@@ -99,10 +103,6 @@ body {
 		text-align: center;
 	}
 
-
-.meal-name, .recipe-name-input {
-	text-transform: capitalize;
-}
 
 /* width */
 ::-webkit-scrollbar {

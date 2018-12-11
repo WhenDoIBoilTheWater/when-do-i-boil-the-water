@@ -13,11 +13,11 @@ class IngredientsList extends React.Component {
     		<ul>
     		{this.props.recipeArray.map(recipe =>{
     			return (
-    				<div key={recipe.id}><br /><strong>{recipe.name}:</strong> {recipe.description}  
+    				<div key={recipe.id}><br /><strong className="leading-capitals">{recipe.name}:</strong> {recipe.description}  
     				{
     					recipe.ingredients.map(ingredient =>{
     						return(
-    							<li key={ingredient.id}>{ingredient.quantity} {ingredient.name}</li>
+    							<li key={ingredient.id} className="leading-capitals">{ingredient.quantity} {ingredient.name}</li>
     							)
     					})
     				}

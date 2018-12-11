@@ -87,7 +87,7 @@ export class Recipe extends React.Component {
     	return (
     		<section className="recipe">
 	    		<h4 className="recipe-time-seconds">{this.state.localSeconds}</h4>
-	    		<h1 className="recipe-name">{this.state.recipe.name}</h1>
+	    		<h1 className="recipe-name leading-capitals">{this.state.recipe.name}</h1>
 	    		<div className="steps-container">
 		    		{currentStep}
 		    		<ul className="list-of-steps">

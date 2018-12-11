@@ -14,6 +14,7 @@
 	cursor: pointer;
 	width: 100%;
 	height: 100%;
+	text-transform: capitalize;
 }
 	.meal-li-name:hover{
 		background-color: rgba(0,0,0,.2)
