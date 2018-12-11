@@ -2,6 +2,7 @@ import React from "react";
 import TimerCard from "./TimerCard.js"
 import CurrentStepCard from "./CurrentStepCard"
 import './css/recipe.css'
+import ding from './notification-tone-01.mp3'
 
 export class Recipe extends React.Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ export class Recipe extends React.Component {
 		this.buildTimers()
         this.tick = this.tick.bind(this);
         
+        this.audio = new Audio(ding)
 	}   
 
 	tick =()=>{
@@ -41,6 +43,9 @@ export class Recipe extends React.Component {
         this.state.recipe.steps.forEach((step)=>{
             this.setTimer(this.state.meal.length - step.secBeforeEnd, step.description, () => {
                 //callback function:
+
+                this.audio.play()
+
                 let length
                 if(this.state.arrayOfTimers[1]){
                 	length = this.state.arrayOfTimers[1].when - this.state.localSeconds
@@ -86,6 +91,7 @@ export class Recipe extends React.Component {
 
     	return (
     		<section className="recipe">
+
 	    		<h4 className="recipe-time-seconds">{this.state.localSeconds}</h4>
 	    		<h1 className="recipe-name leading-capitals">{this.state.recipe.name}</h1>
 	    		<div className="steps-container">

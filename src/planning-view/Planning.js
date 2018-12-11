@@ -13,12 +13,12 @@ export class Planning extends React.Component {
     }
 
     fetchMeals(){
-        console.log("Fetching meals")
+
         fetch(`https://when-do-i-boil-the-java.herokuapp.com/api/meals`).then(res => res.json()).then(data => {
             this.setState({
                 arrayOfMeals: data
             })
-            console.log(data.length)
+
         }
         )
     }
