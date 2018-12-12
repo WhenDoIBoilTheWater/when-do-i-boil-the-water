@@ -80,7 +80,8 @@
 .vertical-ellipsis {
 	border-radius: var(--border-radius);
 	cursor: pointer;
-	margin-left: .5rem;
+	margin-right: .5rem;
+	padding: 0 1rem;
 	text-align: center;
 	height: 1.5rem;
 	width: 1.5rem;
