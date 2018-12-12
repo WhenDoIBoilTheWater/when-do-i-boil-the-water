@@ -82,11 +82,6 @@ class BuildMeal extends React.Component {
                         return (
                             <li className="recipe-li" key={recipe.id}>
                             	<div className="recipe-top-row">
-		                            <span className="dim-on-hover recipe-you-could-select-in-build-view" onClick={() => {
-			                            	this.fetchAddRecipeToMeal(recipe.id)
-			                            }}>
-			                            {recipe.name}
-		                            </span>
 		                            <span className="dim-on-hover vertical-ellipsis" onClick={()=>{
 			                            	if(this.state.ingredientListToView === recipe.id){
 			                            		this.setState({
@@ -100,6 +95,11 @@ class BuildMeal extends React.Component {
 			                            	}
 			                            }}>&#8942;
 		                            </span>
+                                    <span className="dim-on-hover recipe-you-could-select-in-build-view" onClick={() => {
+                                            this.fetchAddRecipeToMeal(recipe.id)
+                                        }}>
+                                        {recipe.name}
+                                    </span>
                                 <span className="recipe-remove-button little-red-button delete-recipe-from-repo-button" onClick={
                                     () => {
                                         let confirmation = window.confirm("You you want to delete this recipe forever?")

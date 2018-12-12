@@ -90,11 +90,6 @@ export class Planning extends React.Component {
                             {arrayOfMeals.map(meal => {
                                 return <li className="meal-li" key={meal.id}>
                                 			<div className="meal-li-initial-stuff">
-	                                            <span className="meal-li-name leading-capitals" onClick={() => {
-	                                                this.props.setMeal(meal)
-	                                            }}>
-	                                                {meal.name}: {Math.floor(meal.length / 60)} minutes
-	                                            </span>
 	                                            <span className="vertical-ellipsis" onClick={()=>{
 	                                                if(this.state.ingredientListToView === meal.id){
 	                                                	this.setState({
@@ -108,6 +103,11 @@ export class Planning extends React.Component {
 	                                                }
 	                                                }}>&#8942;
 	                                            </span>
+                                                <span className="meal-li-name leading-capitals" onClick={() => {
+                                                    this.props.setMeal(meal)
+                                                }}>
+                                                    {meal.name}: {Math.floor(meal.length / 60)} minutes
+                                                </span>
 	                                            <span className="meal-remove-button little-red-button" onClick={
 	                                                () => {
 	                                                    this.fetchRemoveMeal(meal.id);
