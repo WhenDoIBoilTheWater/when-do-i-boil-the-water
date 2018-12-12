@@ -1,6 +1,6 @@
 {
-  "short_name": "React Hello World",
-  "name": "Create React Hello World",
+  "short_name": "Chop Clock",
+  "name": "Chop Clock",
   "icons": [
     {
       "src": "favicon.ico",

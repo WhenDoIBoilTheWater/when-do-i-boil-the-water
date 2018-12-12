@@ -1,7 +1,7 @@
 {
-  "name": "when-do-i-boil-the-water",
+  "name": "chop-clock",
   "version": "1.0.0",
-  "description": "When Do I Boil the Water?",
+  "description": "Chop Clock",
   "main": "index.js",
   "homepage": "https://whendoIboilthewater.github.io/when-do-i-boil-the-water",
   "scripts": {
