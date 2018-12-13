@@ -9,7 +9,8 @@ class BuildMeal extends React.Component {
 
         this.state = {
             arrayOfRecipes : this.props.arrayOfRecipes,
-            newMeal : this.props.passedMeal
+            newMeal : this.props.passedMeal,
+            deleteEnabled: false
         }
 
     }
@@ -103,8 +104,12 @@ class BuildMeal extends React.Component {
                                 <span className="recipe-remove-button little-red-button delete-recipe-from-repo-button" onClick={
                                     () => {
                                         let confirmation = window.confirm("You you want to delete this recipe forever?")
-                                        if(confirmation == true){
-                                            this.fetchDeleteRecipe(recipe.id);
+                                        if(confirmation === true){
+                                            if (this.state.deleteEnabled === true){
+                                                this.fetchDeleteRecipe(recipe.id);
+                                            } else {
+                                                alert("permission denied")
+                                            }
 
                                         }
                                 }}>

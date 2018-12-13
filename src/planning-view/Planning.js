@@ -7,7 +7,8 @@ export class Planning extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            view: 'premade'
+            view: 'premade',
+            deleteEnabled: false
         }
         this.fetchMeals()
     }
@@ -110,7 +111,11 @@ export class Planning extends React.Component {
                                                 </span>
 	                                            <span className="meal-remove-button little-red-button" onClick={
 	                                                () => {
-	                                                    this.fetchRemoveMeal(meal.id);
+                                                        if(this.state.deleteEnabled === true){
+    	                                                    this.fetchRemoveMeal(meal.id);                                                        
+                                                        } else {
+                                                            alert("permission denied")
+                                                        }
 	                                            }}>
 	                                                &times;
 	                                            </span>
