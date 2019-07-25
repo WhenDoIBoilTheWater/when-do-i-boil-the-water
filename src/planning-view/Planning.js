@@ -86,7 +86,7 @@ export class Planning extends React.Component {
             return(
                 <section className="planning-section">
                     <section className="saved-meals-section">
-                        <h2>MEALS MEALS MEALS:</h2>
+                        <h2>LOOK AT THESE MEALS:</h2>
                         <ul className="meals-ul">
                             {arrayOfMeals.map(meal => {
                                 return <li className="meal-li" key={meal.id}>
