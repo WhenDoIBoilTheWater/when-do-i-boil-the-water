@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/when-do-i-boil-the-water/static/css/main.6600a36c.chunk.css",
+    "main.js": "/when-do-i-boil-the-water/static/js/main.d19767f6.chunk.js",
+    "main.js.map": "/when-do-i-boil-the-water/static/js/main.d19767f6.chunk.js.map",
+    "runtime~main.js": "/when-do-i-boil-the-water/static/js/runtime~main.f556168d.js",
+    "runtime~main.js.map": "/when-do-i-boil-the-water/static/js/runtime~main.f556168d.js.map",
+    "static/js/2.3d3e5e3a.chunk.js": "/when-do-i-boil-the-water/static/js/2.3d3e5e3a.chunk.js",
+    "static/js/2.3d3e5e3a.chunk.js.map": "/when-do-i-boil-the-water/static/js/2.3d3e5e3a.chunk.js.map",
+    "index.html": "/when-do-i-boil-the-water/index.html",
+    "precache-manifest.7c938226c7bd336e31b0347e2a5571a8.js": "/when-do-i-boil-the-water/precache-manifest.7c938226c7bd336e31b0347e2a5571a8.js",
+    "service-worker.js": "/when-do-i-boil-the-water/service-worker.js",
+    "static/css/main.6600a36c.chunk.css.map": "/when-do-i-boil-the-water/static/css/main.6600a36c.chunk.css.map",
+    "static/media/kitchen-timer.wav": "/when-do-i-boil-the-water/static/media/kitchen-timer.ff189e21.wav",
+    "static/media/app.css": "/when-do-i-boil-the-water/static/media/swish-bars-03.4833fdfa.png"
+  }
+}
